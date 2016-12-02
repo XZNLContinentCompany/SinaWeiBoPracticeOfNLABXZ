@@ -356,7 +356,7 @@
 					D685B3281DF1604F009013C3 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = T8NZ2NYLBK;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					D685B33C1DF1604F009013C3 = {
 						CreatedOnToolsVersion = 8.1;
@@ -589,13 +589,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T8NZ2NYLBK;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = XZSinaWeiboDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiayuhulian.XZSinaWeiboDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "df4b8ce4-2cda-4b59-a1f9-6cbeda83b69c";
-				PROVISIONING_PROFILE_SPECIFIER = jiayuhulian_development;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -604,14 +605,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = T8NZ2NYLBK;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = XZSinaWeiboDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiayuhulian.XZSinaWeiboDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fec1e80c-dd6b-43ed-b2a9-c2ea5dacff05";
-				PROVISIONING_PROFILE_SPECIFIER = jiayuhulian_distribution;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -693,6 +694,7 @@
 				D685B3531DF16050009013C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D685B3541DF16050009013C3 /* Build configuration list for PBXNativeTarget "XZSinaWeiboDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -701,6 +703,7 @@
 				D685B3561DF16050009013C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D685B3571DF16050009013C3 /* Build configuration list for PBXNativeTarget "XZSinaWeiboDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -709,6 +712,7 @@
 				D685B3591DF16050009013C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
