@@ -102,6 +102,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D641E5641DF5587A00C1C669 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D685B3201DF1604F009013C3 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				D685B3831DF16AC6009013C3 /* DiscoverViewController.swift */,
+				D641E5641DF5587A00C1C669 /* View */,
 			);
 			path = Discover;
 			sourceTree = "<group>";

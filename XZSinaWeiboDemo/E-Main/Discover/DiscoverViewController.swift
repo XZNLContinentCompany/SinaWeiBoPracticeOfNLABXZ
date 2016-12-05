@@ -10,6 +10,32 @@ import UIKit
 
 class DiscoverViewController: SuperViewController {
 
+    //MARK: ------ view will appear & disappear ------
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //coding...
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //coding...
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //coding...
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //coding...
+        
+    }
+    
+    //MARK: ------ view did load ------
     override func viewDidLoad() {
         super.viewDidLoad()
 
