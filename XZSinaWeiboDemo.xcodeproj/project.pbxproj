@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D641E5661DF577DB00C1C669 /* ItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D641E5651DF577DB00C1C669 /* ItemButton.swift */; };
 		D685B32D1DF1604F009013C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B32C1DF1604F009013C3 /* AppDelegate.swift */; };
 		D685B32F1DF1604F009013C3 /* SuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B32E1DF1604F009013C3 /* SuperViewController.swift */; };
 		D685B3321DF1604F009013C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D685B3301DF1604F009013C3 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D641E5651DF577DB00C1C669 /* ItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemButton.swift; sourceTree = "<group>"; };
 		D685B3291DF1604F009013C3 /* XZSinaWeiboDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZSinaWeiboDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D685B32C1DF1604F009013C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D685B32E1DF1604F009013C3 /* SuperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		D641E5641DF5587A00C1C669 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D641E5651DF577DB00C1C669 /* ItemButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				D685B3821DF16ABC009013C3 /* AddViewController.swift in Sources */,
 				D685B3731DF165BC009013C3 /* XXZConstant.swift in Sources */,
 				D685B32F1DF1604F009013C3 /* SuperViewController.swift in Sources */,
+				D641E5661DF577DB00C1C669 /* ItemButton.swift in Sources */,
 				D685B3771DF165BC009013C3 /* XXZLog.swift in Sources */,
 				D685B3791DF165BC009013C3 /* XXZStringClass.swift in Sources */,
 				D685B32D1DF1604F009013C3 /* AppDelegate.swift in Sources */,

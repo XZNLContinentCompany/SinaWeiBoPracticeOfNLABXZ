@@ -17,10 +17,10 @@ public let SCREEN_HEIGHT = SCREEN_SIZE.height
 public let RATIO_WIDTH = SCREEN_WIDTH/320
 public let RATIO_HEIGHT = SCREEN_HEIGHT/480
 
-public let STATUS_BAR_HEIGHT = 20
-public let TAB_BAR_HEIGHT = 44
-public let STATUS_TAB_HEIGHT = STATUS_BAR_HEIGHT+TAB_BAR_HEIGHT
-public let TOOL_BAR_HEIGHT = 49
+public let STATUS_BAR_HEIGHT: CGFloat = 20
+public let NAV_BAR_HEIGHT: CGFloat = 44
+public let STATUS_TAB_HEIGHT = STATUS_BAR_HEIGHT+NAV_BAR_HEIGHT
+public let TOOL_BAR_HEIGHT: CGFloat = 49
 
 //MARK: ----- 当前视图的四个值
 public func X (_ object: UIView) -> CGFloat {
