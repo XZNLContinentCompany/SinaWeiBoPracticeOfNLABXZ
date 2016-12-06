@@ -288,7 +288,7 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
             "ThirdSubTableCellIdentifier",
             "FourthSubTableCellIdentifier"]
         let dataSourceArr = [
-            ["阿炳艳照门事件", "阿炳发明了无线自动实现接客系统", "二十一世纪感动中国: 阿炳"],
+            ["1024", "1029", "1015"],
             ["1", "2", "3", "4"],
             ["5", "6"],
             ["7", "8"]]
@@ -336,7 +336,7 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
     func loadCellButton(_ view: UIView) {
         let height: CGFloat = (view.height-10*RATIO_WIDTH)/2
         let width: CGFloat = SCREEN_WIDTH/2
-        let cellNameArr = ["阿炳疯了", "阿炳陆家嘴事件", "阿炳优衣库事件", "尼古拉斯•阿炳"]
+        let cellNameArr = ["1111", "2222", "3333", "4444"]
         
         for i in 0..<2 {
             for j in 0..<2 {
@@ -412,7 +412,7 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         searchView.searchBarStyle = UISearchBarStyle.minimal //prominent 显示背景, minimal 不显示背景
         searchMaskView?.addSubview(searchView)
         
-        searchView.placeholder = "大家正在搜索: 阿炳地王大厦事件"
+        searchView.placeholder = "大家正在搜索: 唐嫣罗晋合体"
     }
     
     func loadStatusView() {
