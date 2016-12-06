@@ -1,14 +1,14 @@
 //
-//  ItemButton.swift
+//  CellButton.swift
 //  XZSinaWeiboDemo
 //
-//  Created by Jiayu_Zachary on 2016/12/5.
+//  Created by Jiayu_Zachary on 2016/12/6.
 //  Copyright © 2016年 Zachary. All rights reserved.
 //
 
 import UIKit
 
-class ItemButton: UIButton {
+class CellButton: UIButton {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -20,11 +20,9 @@ class ItemButton: UIButton {
     
     var img: UIImageView?
     var mark: UILabel?
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        self.backgroundColor = clearColor
         
         buildLayout()
     }
@@ -32,7 +30,7 @@ class ItemButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     //MARK: ------ <#delegate#> ------
     
     
@@ -46,24 +44,32 @@ class ItemButton: UIButton {
     
     //MARK: ------ loading ------
     func loadImgView() {
-        let img_height = 40*RATIO_WIDTH
-        let mark_height = 20*RATIO_WIDTH
-        let distance_y: CGFloat = (self.height-(img_height+mark_height))/2
-        let distance_x: CGFloat = (self.width-img_height)/2
+        let distance_y = 8*RATIO_WIDTH
+        let distance_x = 10*RATIO_WIDTH
+        let img_height = self.height-distance_y*2
         
         img = UIImageView.init(frame: CGRect.init(x: distance_x, y: distance_y, width: img_height, height: img_height))
-        img?.backgroundColor = cyanColor
-        img?.layer.cornerRadius = img_height/2
+        img?.layer.cornerRadius = 5.0
         img?.layer.masksToBounds = true
+        img?.backgroundColor = cyanColor
+        img?.contentMode = UIViewContentMode.center
         self.addSubview(img!)
         
-        mark = UILabel.init(frame: CGRect.init(x: 0, y: (img?.maxY)!+1, width: self.width, height: mark_height))
+        mark = UILabel.init(frame: CGRect.init(x: (img?.maxX)!+5, y: 0, width: self.width-(distance_x*2+img_height+5), height: self.height))
         mark?.backgroundColor = clearColor
-        mark?.textAlignment = NSTextAlignment.center
+        mark?.textAlignment = NSTextAlignment.left
         mark?.text = "mark"
         mark?.font = FONT_12
         mark?.textColor = UICOLOR_DARK
         self.addSubview(mark!)
+        
+//        let horiLine = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.width, height: 0.5))
+//        horiLine.backgroundColor = LINE_COLOR
+//        self.addSubview(horiLine)
+        
+        let verLine = UIView.init(frame: CGRect.init(x: self.width-0.5, y: 5, width: 0.5, height: self.height-10))
+        verLine.backgroundColor = LINE_COLOR
+        self.addSubview(verLine)
     }
     
     //MARK: ------ method ------
