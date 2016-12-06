@@ -28,23 +28,13 @@ class SubTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         super.init(frame: frame)
         
-        self.isUserInteractionEnabled = false
+//        self.isUserInteractionEnabled = false
         buildLayout()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        
-//        buildLayout()
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     //MARK: ------ UITableViewDataSource ------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,7 +96,7 @@ class SubTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        XXZLog(indexPath.section)
     }
     
     
@@ -123,6 +113,8 @@ class SubTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         subTable = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: self.width, height: self.height), style: UITableViewStyle.grouped)
         subTable?.delegate = self
         subTable?.dataSource = self
+        subTable?.separatorStyle = UITableViewCellSeparatorStyle.none
+        subTable?.isScrollEnabled = false
         subTable?.backgroundColor = BACK_COLOR
         self.addSubview(subTable!)
     }

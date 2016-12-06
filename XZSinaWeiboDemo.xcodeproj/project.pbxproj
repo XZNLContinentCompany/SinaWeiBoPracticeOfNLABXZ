@@ -11,6 +11,8 @@
 		D66C38ED1DF693B900C45A75 /* ItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38EA1DF693B900C45A75 /* ItemButton.swift */; };
 		D66C38EE1DF693B900C45A75 /* ScrollMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38EB1DF693B900C45A75 /* ScrollMaskView.swift */; };
 		D66C38F01DF6953C00C45A75 /* SubTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38EF1DF6953C00C45A75 /* SubTableView.swift */; };
+		D66C38F41DF6A1D300C45A75 /* DiscoverDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38F31DF6A1D300C45A75 /* DiscoverDetailController.swift */; };
+		D66C38F61DF6A63500C45A75 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38F51DF6A63500C45A75 /* MenuView.swift */; };
 		D685B32D1DF1604F009013C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B32C1DF1604F009013C3 /* AppDelegate.swift */; };
 		D685B32F1DF1604F009013C3 /* SuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B32E1DF1604F009013C3 /* SuperViewController.swift */; };
 		D685B3321DF1604F009013C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D685B3301DF1604F009013C3 /* Main.storyboard */; };
@@ -56,6 +58,8 @@
 		D66C38EA1DF693B900C45A75 /* ItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemButton.swift; sourceTree = "<group>"; };
 		D66C38EB1DF693B900C45A75 /* ScrollMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollMaskView.swift; sourceTree = "<group>"; };
 		D66C38EF1DF6953C00C45A75 /* SubTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTableView.swift; sourceTree = "<group>"; };
+		D66C38F31DF6A1D300C45A75 /* DiscoverDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverDetailController.swift; sourceTree = "<group>"; };
+		D66C38F51DF6A63500C45A75 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D685B3291DF1604F009013C3 /* XZSinaWeiboDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZSinaWeiboDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D685B32C1DF1604F009013C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D685B32E1DF1604F009013C3 /* SuperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				D66C38EF1DF6953C00C45A75 /* SubTableView.swift */,
+				D66C38F51DF6A63500C45A75 /* MenuView.swift */,
 			);
 			path = FooterView;
 			sourceTree = "<group>";
@@ -135,6 +140,22 @@
 				D66C38EB1DF693B900C45A75 /* ScrollMaskView.swift */,
 			);
 			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		D66C38F11DF6A17C00C45A75 /* SubClass */ = {
+			isa = PBXGroup;
+			children = (
+				D66C38F21DF6A1BE00C45A75 /* Detail */,
+			);
+			path = SubClass;
+			sourceTree = "<group>";
+		};
+		D66C38F21DF6A1BE00C45A75 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D66C38F31DF6A1D300C45A75 /* DiscoverDetailController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		D685B3201DF1604F009013C3 = {
@@ -231,6 +252,7 @@
 			children = (
 				D685B3831DF16AC6009013C3 /* DiscoverViewController.swift */,
 				D641E5641DF5587A00C1C669 /* View */,
+				D66C38F11DF6A17C00C45A75 /* SubClass */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -467,6 +489,7 @@
 				D685B3821DF16ABC009013C3 /* AddViewController.swift in Sources */,
 				D685B3731DF165BC009013C3 /* XXZConstant.swift in Sources */,
 				D685B32F1DF1604F009013C3 /* SuperViewController.swift in Sources */,
+				D66C38F61DF6A63500C45A75 /* MenuView.swift in Sources */,
 				D66C38ED1DF693B900C45A75 /* ItemButton.swift in Sources */,
 				D685B3771DF165BC009013C3 /* XXZLog.swift in Sources */,
 				D685B3791DF165BC009013C3 /* XXZStringClass.swift in Sources */,
@@ -477,6 +500,7 @@
 				D66C38F01DF6953C00C45A75 /* SubTableView.swift in Sources */,
 				D685B37A1DF165BC009013C3 /* XXZDateModel.swift in Sources */,
 				D685B3751DF165BC009013C3 /* XXZFrame.swift in Sources */,
+				D66C38F41DF6A1D300C45A75 /* DiscoverDetailController.swift in Sources */,
 				D66C38EC1DF693B900C45A75 /* CellButton.swift in Sources */,
 				D685B3741DF165BC009013C3 /* XXZFont.swift in Sources */,
 				D685B37E1DF16839009013C3 /* HomeViewController.swift in Sources */,

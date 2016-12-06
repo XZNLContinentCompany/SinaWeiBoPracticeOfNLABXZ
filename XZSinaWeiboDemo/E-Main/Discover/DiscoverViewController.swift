@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableViewDataSource {
+class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableViewDataSource, MenuViewDelegate {
 
     //MARK: ------ constant & variable ------
     var discoverTable: UITableView?
@@ -18,13 +18,27 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
     var searchMaskView: UIView?
     var statusView: UIView?
     
-    var isShowItemMore: Bool = false
+    var isShowItemMore: Bool = false //是否显示更多
+    var isSkip = false //是否跳转明细
+    
+    //自定义的类
+    var menuView: MenuView?
     
     //MARK: ------ view will appear & disappear ------
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //coding...
         self.navigationController?.isNavigationBarHidden = true
+        
+        initData()
+    }
+    
+    func initData() {
+        isSkip = false
+        if let view = discoverTable {
+//            view.contentOffset = CGPoint.init(x: 0, y: -20)
+            view.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -118,28 +132,64 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
     
     //MARK: ------ UIScrollViewDelegate ------
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let off_y = scrollView.contentOffset.y+20.0
-        XXZLog(off_y)
-        
-        var rect: CGRect = (self.searchMaskView?.frame)!
-        if off_y <= (20+40*RATIO_WIDTH) && off_y >= 0 {
-            rect.origin.y = -off_y
+        if scrollView.tag != 8000 {
+            let off_y = scrollView.contentOffset.y+20.0
+//            XXZLog("\(off_y), \((headerView?.height)!)")
             
-            let alphaValue: CGFloat = off_y/(20+40*RATIO_WIDTH)
-            statusView?.alpha = alphaValue
+            var rect: CGRect = (self.searchMaskView?.frame)!
+            if off_y <= (20+40*RATIO_WIDTH) && off_y >= 0 {
+                rect.origin.y = -off_y
+                
+                let alphaValue: CGFloat = off_y/(20+40*RATIO_WIDTH)
+                statusView?.alpha = alphaValue
 //            XXZLog("alphaValue = \(alphaValue)")
-        }
-        else if  off_y <= 0 {
-            rect.origin.y = 0
+            }
+            else if  off_y <= 0 {
+                rect.origin.y = 0
+                
+                statusView?.alpha = 0.0
+            }
+            else {
+                rect.origin.y = -(20+40*RATIO_WIDTH)
+                
+                statusView?.alpha = 1.0
+            }
+            self.searchMaskView?.frame = rect
             
-            statusView?.alpha = 0.0
+            //跳转具体明细
+            if off_y>=((headerView?.height)!+10*RATIO_WIDTH) {
+                if !isSkip {
+                    isSkip = true
+                    
+                    let detail = DiscoverDetailController()
+                    self.navigationController?.pushViewController(detail, animated: true)
+                }
+            }
         }
         else {
-            rect.origin.y = -(20+40*RATIO_WIDTH)
+            let off_x = scrollView.contentOffset.x
             
-            statusView?.alpha = 1.0
+            XXZLog(off_x)
+            
+            menuView?.lineMoving(off_x)
         }
-        self.searchMaskView?.frame = rect
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let off_x = scrollView.contentOffset.x
+        
+        if scrollView.tag == 8000 {
+            menuView?.lineMoved(off_x)
+        }
+    }
+    
+    //MARK: ------ MenuViewDelegate ------
+    func clickMenuView(_ index: CGFloat) {
+        let scrollView = footerView?.viewWithTag(8000) as! UIScrollView?
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            scrollView?.contentOffset.x = index*(scrollView?.width)!
+        })
     }
     
     //MARK: ------ action ------
@@ -209,6 +259,8 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         menuView.backgroundColor = whiteColor
         footerView?.addSubview(menuView)
         
+        loadMenuView(menuView)
+        
         //滚动视图蒙版
         let scrollMaskView = UIScrollView.init(frame: CGRect.init(x: 0, y: menuView.maxY+1, width: SCREEN_WIDTH, height: SCREEN_HEIGHT-NAV_BAR_HEIGHT))
         scrollMaskView.backgroundColor = cyanColor
@@ -216,19 +268,35 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         scrollMaskView.isPagingEnabled = true
         scrollMaskView.bounces = false
         scrollMaskView.showsVerticalScrollIndicator = false
-        scrollMaskView.isDirectionalLockEnabled = true
+        scrollMaskView.delegate = self
+        scrollMaskView.tag = 8000
         footerView?.addSubview(scrollMaskView)
         
-        loadScrollMaskView(scrollMaskView)
+        loadSubTableView(scrollMaskView)
     }
     
-    func loadScrollMaskView(_ view: UIScrollView) {
-        
-//        for i in 0..<4 {
-            let subTableView = SubTableView.init(CGRect.init(x: 0, y: 0, width: view.width, height: view.height), "FirstSubTableCellIdentifier", ["阿炳艳照门事件", "阿炳发明了无线自动实现接客系统", "二十一世纪感动中国: 阿炳"])
-        view.addSubview(subTableView)
-            
-//        }
+    func loadMenuView(_ view: UIView) {
+        menuView = MenuView.init(frame: CGRect.init(x: 0, y: 0, width: view.width, height: view.height))
+        menuView?.delegate = self;
+        view.addSubview(menuView!)
+    }
+    
+    func loadSubTableView(_ view: UIScrollView) {
+        let identifierArr = [
+            "FirstSubTableCellIdentifier",
+            "SecondSubTableCellIdentifier",
+            "ThirdSubTableCellIdentifier",
+            "FourthSubTableCellIdentifier"]
+        let dataSourceArr = [
+            ["阿炳艳照门事件", "阿炳发明了无线自动实现接客系统", "二十一世纪感动中国: 阿炳"],
+            ["1", "2", "3", "4"],
+            ["5", "6"],
+            ["7", "8"]]
+
+        for i in 0..<4 {
+            let subTableView = SubTableView.init(CGRect.init(x: CGFloat(i)*view.width, y: 0, width: view.width, height: view.height), identifierArr[i], dataSourceArr[i])
+            view.addSubview(subTableView)
+        }
     }
     
     func loadTableHeaderView() {
@@ -239,7 +307,7 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         let header_height: CGFloat = search_height+scroll_height+item_height+cell_height
         
         headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: header_height-item_height/3))
-        headerView?.backgroundColor = whiteColor
+        headerView?.backgroundColor = clearColor
         discoverTable?.tableHeaderView = headerView
         
         //滚动视图
@@ -258,7 +326,7 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         
         //格子视图
         let cellMaskView = UIView.init(frame: CGRect.init(x: 0, y: itemMaskView.maxY-item_height/3, width: SCREEN_WIDTH, height: cell_height))
-        cellMaskView.backgroundColor = clearColor
+        cellMaskView.backgroundColor = whiteColor
         cellMaskView.tag = 9004
         headerView?.addSubview(cellMaskView)
         
@@ -275,7 +343,7 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
                 let index = (j+i*2)
                 
                 let cellButton = CellButton.init(frame: CGRect.init(x: CGFloat(j)*(width), y: 10*RATIO_WIDTH+CGFloat(i)*(height), width: width, height: height))
-                cellButton.backgroundColor = whiteColor
+//                cellButton.backgroundColor = whiteColor
                 view.addSubview(cellButton)
                 
                 cellButton.tag = 3000+index
@@ -360,7 +428,7 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
     //MARK: ------ deinit ------
     deinit {
         //coding...
-        
+        menuView?.delegate = nil
     }
     
     //MARK: ------ other ------
