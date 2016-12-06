@@ -28,6 +28,7 @@ class SubTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         super.init(frame: frame)
         
+        self.isUserInteractionEnabled = false
         buildLayout()
     }
     

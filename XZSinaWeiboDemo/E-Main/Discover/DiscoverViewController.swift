@@ -226,7 +226,6 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         
 //        for i in 0..<4 {
             let subTableView = SubTableView.init(CGRect.init(x: 0, y: 0, width: view.width, height: view.height), "FirstSubTableCellIdentifier", ["阿炳艳照门事件", "阿炳发明了无线自动实现接客系统", "二十一世纪感动中国: 阿炳"])
-        subTableView.isUserInteractionEnabled = false
         view.addSubview(subTableView)
             
 //        }
