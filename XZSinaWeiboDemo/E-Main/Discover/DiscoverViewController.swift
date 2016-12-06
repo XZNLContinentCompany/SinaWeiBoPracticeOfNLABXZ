@@ -23,6 +23,12 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
     
     //自定义的类
     var menuView: MenuView?
+    var currentPage: CGFloat = 0
+    var dataSourceArr = [
+        ["1024", "1029", "1015"],
+        ["1", "2", "3", "4"],
+        ["5", "6"],
+        ["7", "8"]]
     
     //MARK: ------ view will appear & disappear ------
     override func viewWillAppear(_ animated: Bool) {
@@ -162,7 +168,13 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
                     isSkip = true
                     
                     let detail = DiscoverDetailController()
-                    self.navigationController?.pushViewController(detail, animated: true)
+                    detail.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(detail, animated: false)
+                    
+                    XXZLog(currentPage)
+                    XXZLog(dataSourceArr[Int(currentPage)])
+                    
+                    detail.detailArr = dataSourceArr[Int(currentPage)]
                 }
             }
         }
@@ -180,11 +192,13 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         
         if scrollView.tag == 8000 {
             menuView?.lineMoved(off_x)
+            currentPage = off_x/scrollView.width
         }
     }
     
     //MARK: ------ MenuViewDelegate ------
     func clickMenuView(_ index: CGFloat) {
+        currentPage = index
         let scrollView = footerView?.viewWithTag(8000) as! UIScrollView?
         
         UIView.animate(withDuration: 0.3, animations: {
@@ -287,11 +301,6 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
             "SecondSubTableCellIdentifier",
             "ThirdSubTableCellIdentifier",
             "FourthSubTableCellIdentifier"]
-        let dataSourceArr = [
-            ["1024", "1029", "1015"],
-            ["1", "2", "3", "4"],
-            ["5", "6"],
-            ["7", "8"]]
 
         for i in 0..<4 {
             let subTableView = SubTableView.init(CGRect.init(x: CGFloat(i)*view.width, y: 0, width: view.width, height: view.height), identifierArr[i], dataSourceArr[i])
