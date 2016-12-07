@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SubTableViewDelegate {
+    func subTableView(_ indexPath: IndexPath)
+}
+
 class SubTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     /*
@@ -17,6 +21,8 @@ class SubTableView: UIView, UITableViewDelegate, UITableViewDataSource {
         // Drawing code
     }
     */
+    var delegate: SubTableViewDelegate?
+    
     fileprivate var subTable: UITableView?
     
     var cellIdentifier: String = "DefaultSubTableCellIdentifier"
@@ -97,6 +103,13 @@ class SubTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         XXZLog(indexPath.section)
+        
+        if let delegate = delegate {
+            delegate.subTableView(indexPath)
+        }
+        else {
+            XXZLog("没有实现协议")
+        }
     }
     
     

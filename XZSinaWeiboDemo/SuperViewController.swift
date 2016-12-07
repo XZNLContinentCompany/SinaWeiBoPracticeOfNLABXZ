@@ -9,16 +9,13 @@
 import UIKit
 
 class SuperViewController: UIViewController {
-
-    var myName: String?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.backgroundColor = whiteColor
-        self.navigationItem.title = "super"
+        self.view.backgroundColor = BACK_COLOR
+//        self.navigationItem.title = "super"
         
         buildLayout()
     }
@@ -31,7 +28,7 @@ class SuperViewController: UIViewController {
     
     //MARK: ------ build layout ------
     fileprivate func buildLayout() {
-        myName = "xxz"
+        
     }
     
     //MARK: ------ loading ------

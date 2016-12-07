@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D633E05A1DF7D92600A019F1 /* ConcreteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633E0591DF7D92600A019F1 /* ConcreteDetailController.swift */; };
+		D633E05E1DF7E89300A019F1 /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633E05D1DF7E89300A019F1 /* BottomButton.swift */; };
 		D66C38EC1DF693B900C45A75 /* CellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38E91DF693B900C45A75 /* CellButton.swift */; };
 		D66C38ED1DF693B900C45A75 /* ItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38EA1DF693B900C45A75 /* ItemButton.swift */; };
 		D66C38EE1DF693B900C45A75 /* ScrollMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38EB1DF693B900C45A75 /* ScrollMaskView.swift */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D633E0591DF7D92600A019F1 /* ConcreteDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteDetailController.swift; sourceTree = "<group>"; };
+		D633E05D1DF7E89300A019F1 /* BottomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
 		D66C38E91DF693B900C45A75 /* CellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellButton.swift; sourceTree = "<group>"; };
 		D66C38EA1DF693B900C45A75 /* ItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemButton.swift; sourceTree = "<group>"; };
 		D66C38EB1DF693B900C45A75 /* ScrollMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollMaskView.swift; sourceTree = "<group>"; };
@@ -114,6 +118,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D633E0581DF7D90400A019F1 /* Concrete */ = {
+			isa = PBXGroup;
+			children = (
+				D633E0591DF7D92600A019F1 /* ConcreteDetailController.swift */,
+				D633E05B1DF7E87600A019F1 /* Cell */,
+				D633E05C1DF7E87600A019F1 /* View */,
+			);
+			path = Concrete;
+			sourceTree = "<group>";
+		};
+		D633E05B1DF7E87600A019F1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D633E05C1DF7E87600A019F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D633E05D1DF7E89300A019F1 /* BottomButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D641E5641DF5587A00C1C669 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				D66C38F31DF6A1D300C45A75 /* DiscoverDetailController.swift */,
+				D633E0581DF7D90400A019F1 /* Concrete */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -488,7 +518,9 @@
 				D685B3861DF16ACD009013C3 /* MeViewController.swift in Sources */,
 				D685B3821DF16ABC009013C3 /* AddViewController.swift in Sources */,
 				D685B3731DF165BC009013C3 /* XXZConstant.swift in Sources */,
+				D633E05E1DF7E89300A019F1 /* BottomButton.swift in Sources */,
 				D685B32F1DF1604F009013C3 /* SuperViewController.swift in Sources */,
+				D633E05A1DF7D92600A019F1 /* ConcreteDetailController.swift in Sources */,
 				D66C38F61DF6A63500C45A75 /* MenuView.swift in Sources */,
 				D66C38ED1DF693B900C45A75 /* ItemButton.swift in Sources */,
 				D685B3771DF165BC009013C3 /* XXZLog.swift in Sources */,

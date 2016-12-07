@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableViewDataSource, MenuViewDelegate {
+class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableViewDataSource, MenuViewDelegate, SubTableViewDelegate {
 
     //MARK: ------ constant & variable ------
     var discoverTable: UITableView?
@@ -206,6 +206,19 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         })
     }
     
+    //MARK: ------ SubTableViewDelegate ------
+    func subTableView(_ indexPath: IndexPath) {
+        let concrete = ConcreteDetailController()
+        concrete.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(concrete, animated: true)
+        
+//        XXZLog(currentPage)
+//        XXZLog(dataSourceArr[Int(currentPage)])
+        
+        concrete.index = Int(indexPath.section)
+        concrete.concreteArr = dataSourceArr[Int(currentPage)]
+    }
+    
     //MARK: ------ action ------
     func itemButtonAction(_ item: ItemButton) {
         let tag = item.tag-2000
@@ -304,6 +317,7 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
 
         for i in 0..<4 {
             let subTableView = SubTableView.init(CGRect.init(x: CGFloat(i)*view.width, y: 0, width: view.width, height: view.height), identifierArr[i], dataSourceArr[i])
+            subTableView.delegate = self
             view.addSubview(subTableView)
         }
     }

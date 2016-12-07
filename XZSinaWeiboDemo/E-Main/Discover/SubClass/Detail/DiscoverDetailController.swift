@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscoverDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITableViewDataSource {
 
     //MARK: ------ constant & variable ------
     var detailArr: [Any]?
