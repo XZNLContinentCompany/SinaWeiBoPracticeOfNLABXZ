@@ -36,6 +36,8 @@
 		D685B3821DF16ABC009013C3 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B3811DF16ABC009013C3 /* AddViewController.swift */; };
 		D685B3841DF16AC6009013C3 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B3831DF16AC6009013C3 /* DiscoverViewController.swift */; };
 		D685B3861DF16ACD009013C3 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B3851DF16ACD009013C3 /* MeViewController.swift */; };
+		D6C008E31DF8179200B1FBA2 /* ConcreteOneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C008E21DF8179200B1FBA2 /* ConcreteOneCell.swift */; };
+		D6C008E51DF8263100B1FBA2 /* ClickRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C008E41DF8263100B1FBA2 /* ClickRightView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		D685B3811DF16ABC009013C3 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		D685B3831DF16AC6009013C3 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		D685B3851DF16ACD009013C3 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		D6C008E21DF8179200B1FBA2 /* ConcreteOneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteOneCell.swift; sourceTree = "<group>"; };
+		D6C008E41DF8263100B1FBA2 /* ClickRightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickRightView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 		D633E05B1DF7E87600A019F1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D6C008E21DF8179200B1FBA2 /* ConcreteOneCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				D633E05D1DF7E89300A019F1 /* BottomButton.swift */,
+				D6C008E41DF8263100B1FBA2 /* ClickRightView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -516,6 +522,8 @@
 				D66C38EE1DF693B900C45A75 /* ScrollMaskView.swift in Sources */,
 				D685B3801DF168C6009013C3 /* MainViewController.swift in Sources */,
 				D685B3861DF16ACD009013C3 /* MeViewController.swift in Sources */,
+				D6C008E51DF8263100B1FBA2 /* ClickRightView.swift in Sources */,
+				D6C008E31DF8179200B1FBA2 /* ConcreteOneCell.swift in Sources */,
 				D685B3821DF16ABC009013C3 /* AddViewController.swift in Sources */,
 				D685B3731DF165BC009013C3 /* XXZConstant.swift in Sources */,
 				D633E05E1DF7E89300A019F1 /* BottomButton.swift in Sources */,

@@ -14,6 +14,7 @@ class ConcreteDetailController: SuperViewController, UITableViewDelegate, UITabl
     var index: Int?
     var concreteArr: [Any]?
     var concreteTable: UITableView?
+    var clickRightView: ClickRightView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +61,17 @@ class ConcreteDetailController: SuperViewController, UITableViewDelegate, UITabl
             
             var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
             if cell==nil {
-                cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
+                cell = ConcreteOneCell.init(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
                 cell?.selectionStyle = UITableViewCellSelectionStyle.none
             }
             //conding...
             
+            let info = [
+                ["title":"1111", "from":"Zachary"],
+                ["title":"2222", "from":"Zachary"],
+                ["title":"3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333", "from":"Zachary"]]
+            
+            (cell as! ConcreteOneCell?)?.concreteOneCell(indexPath, 110*RATIO_WIDTH, info)
             
             return cell!
         }
@@ -98,7 +105,7 @@ class ConcreteDetailController: SuperViewController, UITableViewDelegate, UITabl
             let transpond = UILabel.init(frame: CGRect.init(x: distance_x, y: 0, width: width, height: headerView.height))
             transpond.textAlignment = NSTextAlignment.left
             transpond.textColor = UICOLOR_DARK
-            transpond.font = FONT_10
+            transpond.font = FONT_12
 //            transpond.backgroundColor = cyanColor
             headerView.addSubview(transpond)
             
@@ -106,7 +113,7 @@ class ConcreteDetailController: SuperViewController, UITableViewDelegate, UITabl
             let comment = UILabel.init(frame: CGRect.init(x: transpond.maxX+1, y: 0, width: width-1, height: headerView.height))
             comment.textAlignment = NSTextAlignment.left
             comment.textColor = UICOLOR_DARK
-            comment.font = FONT_10
+            comment.font = FONT_12
 //            comment.backgroundColor = cyanColor
             headerView.addSubview(comment)
             
@@ -114,7 +121,7 @@ class ConcreteDetailController: SuperViewController, UITableViewDelegate, UITabl
             let favour = UILabel.init(frame: CGRect.init(x: comment.maxX+1, y: 0, width: width-1, height: headerView.height))
             favour.textAlignment = NSTextAlignment.right
             favour.textColor = UICOLOR_DARK
-            favour.font = FONT_10
+            favour.font = FONT_12
 //            favour.backgroundColor = cyanColor
             headerView.addSubview(favour)
             
@@ -177,6 +184,8 @@ class ConcreteDetailController: SuperViewController, UITableViewDelegate, UITabl
     //MARK: ------ action ------
     func rightAction() {
         XXZLog("right item")
+        
+        clickRightView?.showAnimated()
     }
     
     var defaultFavourStatus: Bool = false
@@ -203,9 +212,16 @@ class ConcreteDetailController: SuperViewController, UITableViewDelegate, UITabl
         loadConcreteTable()
         loadBottomView()
         loadHeaderView()
+        
+        loadClickRightView()
     }
     
     //MARK: ------ loading ------
+    func loadClickRightView() {
+        clickRightView = ClickRightView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        UIApplication.shared.keyWindow?.addSubview(clickRightView!)
+    }
+    
     func loadHeaderView() {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: 5*RATIO_WIDTH))
         headerView.backgroundColor = clearColor
