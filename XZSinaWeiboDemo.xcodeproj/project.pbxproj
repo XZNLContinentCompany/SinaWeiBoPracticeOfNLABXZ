@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04CCF2021DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCF2011DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift */; };
+		04CCF2071DF85B820075F955 /* NLABHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCF2061DF85B820075F955 /* NLABHomeCell.swift */; };
 		D633E05A1DF7D92600A019F1 /* ConcreteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633E0591DF7D92600A019F1 /* ConcreteDetailController.swift */; };
 		D633E05E1DF7E89300A019F1 /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633E05D1DF7E89300A019F1 /* BottomButton.swift */; };
 		D66C38EC1DF693B900C45A75 /* CellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38E91DF693B900C45A75 /* CellButton.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		04CCF2011DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABDefineBtnOfHomeTitle.swift; sourceTree = "<group>"; };
+		04CCF2061DF85B820075F955 /* NLABHomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABHomeCell.swift; sourceTree = "<group>"; };
 		D633E0591DF7D92600A019F1 /* ConcreteDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteDetailController.swift; sourceTree = "<group>"; };
 		D633E05D1DF7E89300A019F1 /* BottomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
 		D66C38E91DF693B900C45A75 /* CellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellButton.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				04CCF2011DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift */,
+				04CCF2061DF85B820075F955 /* NLABHomeCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 		D685B3211DF1604F009013C3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = NLAB;
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Zachary;
@@ -564,6 +568,7 @@
 				D685B32D1DF1604F009013C3 /* AppDelegate.swift in Sources */,
 				D685B3721DF165BC009013C3 /* XXZColor.swift in Sources */,
 				D685B3841DF16AC6009013C3 /* DiscoverViewController.swift in Sources */,
+				04CCF2071DF85B820075F955 /* NLABHomeCell.swift in Sources */,
 				D685B3781DF165BC009013C3 /* XXZInterface.swift in Sources */,
 				D66C38F01DF6953C00C45A75 /* SubTableView.swift in Sources */,
 				D685B37A1DF165BC009013C3 /* XXZDateModel.swift in Sources */,

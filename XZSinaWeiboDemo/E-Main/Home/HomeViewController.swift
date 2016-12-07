@@ -8,7 +8,11 @@
 
 import UIKit
 
-class HomeViewController: SuperViewController {
+class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    // MARK: Constants && Variables
+    var homeTableView: UITableView?
+    var homeSearchBar: UISearchBar?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,28 @@ class HomeViewController: SuperViewController {
     }
     
     //MARK: ------ <#delegate#> ------
+    // MARK: UITableViewDataSource && Delegate
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let homeTableViewCell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        homeTableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
+        homeTableViewCell.backgroundColor = redColor
+
+        homeTableViewCell.textLabel?.text = String.init(format: "第%d行", indexPath.row)
+        return homeTableViewCell
+
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44 * RATIO_WIDTH
+    }
+    
+    
     
     
     //MARK: ------ action ------
@@ -41,7 +67,7 @@ class HomeViewController: SuperViewController {
     func buildLayout() {
         buildNavi()
         setupSearchBar()
-        
+        defineMyTableView()
     }
     
     // MARK: ----- buildNavigationBar
@@ -57,20 +83,6 @@ class HomeViewController: SuperViewController {
         myDefineBtn.addTarget(self, action: #selector(didClickTitleView), for: UIControlEvents.touchUpInside)
         self.navigationItem.titleView = myDefineBtn
         
-        #if false
-            let titleAndSelecBtn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 100 * RATIO_WIDTH, height: 40 * RATIO_WIDTH))
-            titleAndSelecBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 20)
-            titleAndSelecBtn.titleLabel?.text = "userNick"
-            titleAndSelecBtn.titleLabel?.textColor = UIColor.darkText
-            titleAndSelecBtn.titleLabel?.textAlignment = NSTextAlignment.center
-            titleAndSelecBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-            titleAndSelecBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 70, 0, 0)
-            titleAndSelecBtn.imageView?.image = UIImage.init(named: "navigationbar_arrow_down")
-            titleAndSelecBtn.addTarget(self, action: #selector(didClickTitleView), for: UIControlEvents.touchUpInside)
-            self.navigationItem.titleView = titleAndSelecBtn
-            //        titleAndSelecBtn.backgroundColor = UIColor.red
-        #endif
-        
         let otherActionBtn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 44 * RATIO_WIDTH, height: 44 * RATIO_WIDTH))
         otherActionBtn.imageView?.image = UIImage.init(named: "navigationbar_more")
         otherActionBtn.setImage(UIImage.init(named: "navigationbar_more"), for: UIControlState.normal)
@@ -81,7 +93,23 @@ class HomeViewController: SuperViewController {
     
     // MARK: ----- setupSearchBar -----
     func setupSearchBar() {
-        
+        let homeSearchBar = UISearchBar.init(frame: CGRect.init(x: 0, y: 60 * RATIO_WIDTH, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH))
+        homeSearchBar.placeholder = "大家正在搜: 刘海先不要剪"
+        homeSearchBar.searchBarStyle = UISearchBarStyle.default
+//        homeSearchBar.searchBarStyle = UISearchBarStyle.prominent
+//        homeSearchBar.searchBarStyle = UISearchBarStyle.minimal
+        self.homeSearchBar = homeSearchBar
+        self.view.addSubview(homeSearchBar)
+    }
+    
+    func defineMyTableView() {
+        let homeTableView = UITableView.init(frame: CGRect.init(x: 0, y: (self.homeSearchBar?.y)! + (self.homeSearchBar?.height)!, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - 125 * RATIO_WIDTH), style: UITableViewStyle.plain)
+        homeTableView.backgroundColor = clearColor
+        self.homeTableView = homeTableView
+        self.homeTableView?.delegate = self
+        self.homeTableView?.dataSource = self
+        self.homeTableView?.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        self.view.addSubview(homeTableView)
     }
     
     
