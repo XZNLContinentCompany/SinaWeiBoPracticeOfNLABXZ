@@ -8,13 +8,44 @@
 
 import UIKit
 
-class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITableViewDataSource {
+class DiscoverDetailController: SuperViewController, UIScrollViewDelegate, DetailNavBarViewDelegate {
 
     //MARK: ------ constant & variable ------
     var detailArr: [Any]?
+    var menuIndex: Int = 0
+    
     var detailTable: UITableView?
+    var scrollMaskView: UIScrollView?
     
     var detailNacBarView: DetailNavBarView?
+    
+    //MARK: ------ view will appear & disappear ------
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //coding...
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //coding...
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //coding...
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //coding...
+        
+    }
+    
+    //MARK: ------ view did load ------
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,78 +60,28 @@ class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITabl
             XXZLog(value)
         }
     }
-
-    //MARK: ------ UITableViewDataSource ------
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if let value = detailArr {
-            return value.count
-        }
-        
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier: String = "DiscoverDetailCellIdentifier"
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
-        if cell==nil {
-            cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
-            cell?.selectionStyle = UITableViewCellSelectionStyle.none
-            cell?.textLabel?.font = FONT_12
-        }
-        //conding...
-        if let value = detailArr {
-            let content = String.init(describing: value[indexPath.section])
-            cell?.textLabel?.text = content
-        }
-        
-        return cell!
-    }
-    
-    //MARK: ------ UITableViewDelegate ------
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView.init()
-//        headerView.frame = CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: <#30*RATIO_WIDTH#>)
-//        headerView.backgroundColor = LINE_COLOR
-//        
-//        return headerView
-//    }
-//    
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let footerView = UIView.init()
-//        footerView.frame = CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: <#30*RATIO_WIDTH#>)
-//        footerView.backgroundColor = LINE_COLOR
-//        
-//        return footerView
-//    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0*RATIO_WIDTH
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let concrete = ConcreteDetailController()
-        
-        self.navigationController?.pushViewController(concrete, animated: true)
-        
-        if let value = detailArr {
-            concrete.index = indexPath.section
-            concrete.concreteArr = value
+    //MARK: ------ UIScrollViewDelegate ------
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.tag == 8000 {
+            let off_x = scrollView.contentOffset.x
+            detailNacBarView?.scrollMenuMovingAnimated(off_x)
         }
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let off_x = scrollView.contentOffset.x
+        
+        if scrollView.tag == 8000 {
+            detailNacBarView?.scrollMenuMovedAnimated(off_x)
+            menuIndex = Int(off_x/scrollView.width)
+        }
+    }
+    
+    //MARK: ------ DetailNavBarViewDelegate ------
+    func detailNavBarView(_ index: Int) {
+        menuIndex = index
+    }
     
     //MARK: ------ action ------
     func leftAction() {
@@ -111,12 +92,14 @@ class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITabl
     func buildLayout() {
         loadLeftItem()
         loadDetailNavBarView()
-        loadDetailTable()
+        loadScrollMaskView()
     }
     
     //MARK: ------ loading ------
     func loadDetailNavBarView() {
         detailNacBarView = DetailNavBarView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH-(15*2+30)*RATIO_WIDTH, height: 44))
+        detailNacBarView?.delegate = self
+        detailNacBarView?.getLastMenuButton(menuIndex)
         self.navigationItem.titleView = detailNacBarView
     }
     
@@ -135,12 +118,22 @@ class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITabl
         self.navigationItem.rightBarButtonItem = rightItem
     }
     
-    func loadDetailTable() {
-        detailTable = UITableView.init(frame: self.view.frame, style: UITableViewStyle.grouped)
-        detailTable?.delegate = self;
-        detailTable?.dataSource = self;
-        detailTable?.backgroundColor = clearColor
-        self.view.addSubview(detailTable!)
+    func loadScrollMaskView() {
+        scrollMaskView = UIScrollView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        scrollMaskView?.delegate = self
+        scrollMaskView?.tag = 8000
+//        scrollMaskView?.backgroundColor = purpleColor
+        scrollMaskView?.isPagingEnabled = true
+        scrollMaskView?.bounces = false
+        scrollMaskView?.contentSize = CGSize.init(width: SCREEN_WIDTH*4, height: 0)
+        scrollMaskView?.contentOffset = CGPoint.init(x: SCREEN_WIDTH*CGFloat(menuIndex), y: 0)
+        self.view.addSubview(scrollMaskView!)
+        
+        for i in 0..<4 {
+            let detailTableView = DetailTableView.init(frame: CGRect.init(x: CGFloat(i)*SCREEN_WIDTH, y: 0, width: SCREEN_WIDTH-1, height: SCREEN_HEIGHT))
+            detailTableView.detailArr = (detailArr as! Array<Array<String>>)[i]
+            scrollMaskView?.addSubview(detailTableView)
+        }
     }
     
     //MARK: ------ method ------
@@ -149,7 +142,7 @@ class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITabl
     //MARK: ------ deinit ------
     deinit {
         //coding...
-        
+        detailNacBarView?.delegate = nil
     }
     
     //MARK: ------ other ------

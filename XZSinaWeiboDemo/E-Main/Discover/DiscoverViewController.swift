@@ -37,6 +37,8 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         self.navigationController?.isNavigationBarHidden = true
         
         initData()
+        
+        XXZLog(currentPage)
     }
     
     func initData() {
@@ -51,6 +53,8 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         super.viewWillDisappear(animated)
         //coding...
         self.navigationController?.isNavigationBarHidden = false
+        
+        XXZLog(currentPage)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -171,10 +175,11 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
                     detail.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(detail, animated: false)
                     
-                    XXZLog(currentPage)
-                    XXZLog(dataSourceArr[Int(currentPage)])
+//                    XXZLog(currentPage)
+//                    XXZLog(dataSourceArr[Int(currentPage)])
                     
-                    detail.detailArr = dataSourceArr[Int(currentPage)]
+                    detail.detailArr = dataSourceArr
+                    detail.menuIndex = Int(currentPage)
                 }
             }
         }

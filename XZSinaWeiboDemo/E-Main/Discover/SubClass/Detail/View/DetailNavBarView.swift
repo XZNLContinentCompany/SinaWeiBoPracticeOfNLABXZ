@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DetailNavBarViewDelegate {
+    func detailNavBarView(_ index: Int)
+}
+
 class DetailNavBarView: UIView {
 
     /*
@@ -17,6 +21,8 @@ class DetailNavBarView: UIView {
         // Drawing code
     }
     */
+    var delegate: DetailNavBarViewDelegate?
+    
     var lastMenu: UIButton?
     var bottomLine: UIView?
     
@@ -35,8 +41,20 @@ class DetailNavBarView: UIView {
     
     //MARK: ------ action ------
     func menuAction(_ btn:UIButton) {
-        let tag = btn.tag
-        XXZLog("tag = \(tag)")
+        if let delegate = delegate {
+            let tag = btn.tag-1000
+//            XXZLog("tag = \(tag)")
+            
+            lastMenu?.setTitleColor(UICOLOR_DARK, for: UIControlState.normal)
+            btn.setTitleColor(redColor, for: UIControlState.normal)
+            lastMenu = btn
+            
+            clickMenuMovingAnimated(tag)
+            delegate.detailNavBarView(tag)
+        }
+        else {
+            XXZLog("没有实现协议")
+        }
     }
     
     //MARK: ------ build layout ------
@@ -56,7 +74,7 @@ class DetailNavBarView: UIView {
             btn.tag = 1000+i
             btn.titleLabel?.font = FONT_12
             btn.setTitle(menuNameArr[i], for: UIControlState.normal)
-            btn.backgroundColor = cyanColor
+//            btn.backgroundColor = cyanColor
             self.addSubview(btn)
             
             btn.addTarget(self, action: #selector(menuAction(_ :)), for: UIControlEvents.touchUpInside)
@@ -76,9 +94,39 @@ class DetailNavBarView: UIView {
     }
     
     //MARK: ------ method ------
+    func scrollMenuMovedAnimated(_ move: CGFloat) {
+        let ratio: CGFloat = move/SCREEN_WIDTH
+        
+        //菜单字体颜色更新
+        let nowMenu = self.viewWithTag(Int(1000+ratio)) as! UIButton?
+        
+        //颜色赋值顺序不可变: 先更新标记的, 再更新当前的
+        lastMenu?.setTitleColor(UICOLOR_DARK, for: UIControlState.normal)
+        nowMenu?.setTitleColor(redColor, for: UIControlState.normal)
+        
+        //将当前 标记
+        lastMenu = nowMenu
+    }
+    
+    func scrollMenuMovingAnimated(_ move: CGFloat) {
+        let ratio: CGFloat = move/SCREEN_WIDTH
+        let moveWidth = ratio*((bottomLine?.width)!+10*2)
+        
+        //线移动
+        bottomLine?.transform = CATransform3DGetAffineTransform(CATransform3DMakeTranslation(moveWidth, 0, 0))
+    }
+    
+    func clickMenuMovingAnimated(_ index: Int) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.bottomLine?.transform = CGAffineTransform.init(translationX: (self.lastMenu?.width)!*CGFloat(index), y: 0)
+        })
+    }
+    
     func getLastMenuButton(_ index: Int) {
+        lastMenu?.setTitleColor(UICOLOR_DARK, for: UIControlState.normal)
+        
         lastMenu = self.viewWithTag(1000+index) as! UIButton?
-        lastMenu?.backgroundColor = redColor
+        lastMenu?.setTitleColor(redColor, for: UIControlState.normal)
         
         bottomLine?.transform = CGAffineTransform.init(translationX: (lastMenu?.width)!*CGFloat(index), y: 0)
     }

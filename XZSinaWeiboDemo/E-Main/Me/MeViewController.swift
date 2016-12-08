@@ -8,6 +8,25 @@
 
 import UIKit
 
+//MARK: ------ variable & constant ------
+
+
+//MARK: ------ custom extension ------
+
+
+//MARK: ------ custom protocol ------
+
+
+//MARK: ------ custom enum ------
+
+
+//MARK: ------ custom struct ------
+
+
+//MARK: ------ custom class ------
+
+
+//MARK: ------ main class ------
 class MeViewController: SuperViewController {
 
     override func viewDidLoad() {
