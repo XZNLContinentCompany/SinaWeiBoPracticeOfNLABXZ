@@ -67,7 +67,15 @@ class ConcreteOneCell: UITableViewCell {
     }
     
     //MARK: ------ action ------
-    
+    func tapAction(_ tap: UIGestureRecognizer) {
+        let view = tap.view
+        if let tag = view?.tag {
+            XXZLog("tag = \(tag)")
+        }
+        else {
+            XXZLog("没有view")
+        }
+    }
     
     //MARK: ------ build layout ------
     func buildLayout() {
@@ -86,8 +94,11 @@ class ConcreteOneCell: UITableViewCell {
         for i in 0..<count {
             let subView = UIView.init(frame: CGRect.init(x: CGFloat(i)*width, y: 0, width: width-1, height: height))
 //            subView.backgroundColor = RGB(CGFloat(i+10), CGFloat(i*10+50), CGFloat(i*100+20))
-            scrollView?.addSubview(subView)
             subView.tag = 1000+i
+            scrollView?.addSubview(subView)
+            
+            let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapAction(_ :)))
+            subView.addGestureRecognizer(tap)
             
             let img_height = height-10*2
             let img = UIImageView.init(frame: CGRect.init(x: 10, y: 10, width: img_height, height: img_height))

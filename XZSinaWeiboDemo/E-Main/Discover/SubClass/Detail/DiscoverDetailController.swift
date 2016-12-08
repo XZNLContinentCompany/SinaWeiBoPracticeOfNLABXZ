@@ -14,6 +14,8 @@ class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITabl
     var detailArr: [Any]?
     var detailTable: UITableView?
     
+    var detailNacBarView: DetailNavBarView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -89,7 +91,14 @@ class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let concrete = ConcreteDetailController()
         
+        self.navigationController?.pushViewController(concrete, animated: true)
+        
+        if let value = detailArr {
+            concrete.index = indexPath.section
+            concrete.concreteArr = value
+        }
     }
     
     
@@ -101,10 +110,16 @@ class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITabl
     //MARK: ------ build layout ------
     func buildLayout() {
         loadLeftItem()
+        loadDetailNavBarView()
         loadDetailTable()
     }
     
     //MARK: ------ loading ------
+    func loadDetailNavBarView() {
+        detailNacBarView = DetailNavBarView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH-(15*2+30)*RATIO_WIDTH, height: 44))
+        self.navigationItem.titleView = detailNacBarView
+    }
+    
     func loadLeftItem() {
         let left = UIButton.init(type: UIButtonType.custom)
         left.frame = CGRect.init(x: 0, y: 0, width: 30, height: 44)
@@ -115,6 +130,9 @@ class DiscoverDetailController: SuperViewController, UITableViewDelegate, UITabl
         
         let leftItem = UIBarButtonItem.init(customView: left)
         self.navigationItem.leftBarButtonItem = leftItem
+        
+        let rightItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = rightItem
     }
     
     func loadDetailTable() {

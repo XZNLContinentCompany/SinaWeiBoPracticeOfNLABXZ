@@ -66,7 +66,7 @@ class ClickRightView: UIView {
     
     func loadBottomButton() {
         let bottomButton = UIButton.init(type: UIButtonType.custom)
-        bottomButton.frame = CGRect.init(x: 0, y: (bottomMaskView?.height)!-40, width: (bottomMaskView?.width)!, height: 40)
+        bottomButton.frame = CGRect.init(x: 0, y: (bottomMaskView?.height)!-BOTTOM_HEIGHT, width: (bottomMaskView?.width)!, height: BOTTOM_HEIGHT)
         bottomButton.titleLabel?.font = FONT_14
         bottomButton.backgroundColor = whiteColor
         bottomButton.setTitle("取消", for: UIControlState.normal)

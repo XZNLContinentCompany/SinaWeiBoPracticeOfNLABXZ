@@ -40,6 +40,7 @@
 		D685B3861DF16ACD009013C3 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B3851DF16ACD009013C3 /* MeViewController.swift */; };
 		D6C008E31DF8179200B1FBA2 /* ConcreteOneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C008E21DF8179200B1FBA2 /* ConcreteOneCell.swift */; };
 		D6C008E51DF8263100B1FBA2 /* ClickRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C008E41DF8263100B1FBA2 /* ClickRightView.swift */; };
+		D6E73BEB1DF90DC400CC572C /* DetailNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E73BEA1DF90DC400CC572C /* DetailNavBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		D685B3851DF16ACD009013C3 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		D6C008E21DF8179200B1FBA2 /* ConcreteOneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteOneCell.swift; sourceTree = "<group>"; };
 		D6C008E41DF8263100B1FBA2 /* ClickRightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickRightView.swift; sourceTree = "<group>"; };
+		D6E73BEA1DF90DC400CC572C /* DetailNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNavBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				D66C38F31DF6A1D300C45A75 /* DiscoverDetailController.swift */,
+				D6E73BE81DF90D8C00CC572C /* Cell */,
+				D6E73BE91DF90D8C00CC572C /* View */,
 				D633E0581DF7D90400A019F1 /* Concrete */,
 			);
 			path = Detail;
@@ -411,6 +415,21 @@
 			path = XXZDateModel;
 			sourceTree = "<group>";
 		};
+		D6E73BE81DF90D8C00CC572C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D6E73BE91DF90D8C00CC572C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6E73BEA1DF90DC400CC572C /* DetailNavBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -552,6 +571,7 @@
 				D685B3761DF165BC009013C3 /* XXZFuncMethod.swift in Sources */,
 				D66C38EE1DF693B900C45A75 /* ScrollMaskView.swift in Sources */,
 				D685B3801DF168C6009013C3 /* MainViewController.swift in Sources */,
+				D6E73BEB1DF90DC400CC572C /* DetailNavBarView.swift in Sources */,
 				D685B3861DF16ACD009013C3 /* MeViewController.swift in Sources */,
 				D6C008E51DF8263100B1FBA2 /* ClickRightView.swift in Sources */,
 				D6C008E31DF8179200B1FBA2 /* ConcreteOneCell.swift in Sources */,
