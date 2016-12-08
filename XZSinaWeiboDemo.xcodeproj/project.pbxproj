@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		0447C8171DF911F900307F95 /* NLABOtherOperateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447C8161DF911F900307F95 /* NLABOtherOperateView.swift */; };
 		0447C8191DF944E900307F95 /* NLABFriendFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447C8181DF944E900307F95 /* NLABFriendFocusViewController.swift */; };
-		0447C81B1DF9498A00307F95 /* NLABBackBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447C81A1DF9498A00307F95 /* NLABBackBtn.swift */; };
 		04CCF2021DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCF2011DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift */; };
 		04CCF2071DF85B820075F955 /* NLABHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCF2061DF85B820075F955 /* NLABHomeCell.swift */; };
 		D633E05A1DF7D92600A019F1 /* ConcreteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633E0591DF7D92600A019F1 /* ConcreteDetailController.swift */; };
 		D633E05E1DF7E89300A019F1 /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633E05D1DF7E89300A019F1 /* BottomButton.swift */; };
+		D656928F1DF95326006E641F /* SuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656928C1DF95326006E641F /* SuperViewController.swift */; };
+		D65692901DF95326006E641F /* NLABBackBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656928E1DF95326006E641F /* NLABBackBtn.swift */; };
 		D66C38EC1DF693B900C45A75 /* CellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38E91DF693B900C45A75 /* CellButton.swift */; };
 		D66C38ED1DF693B900C45A75 /* ItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38EA1DF693B900C45A75 /* ItemButton.swift */; };
 		D66C38EE1DF693B900C45A75 /* ScrollMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38EB1DF693B900C45A75 /* ScrollMaskView.swift */; };
@@ -21,7 +22,6 @@
 		D66C38F41DF6A1D300C45A75 /* DiscoverDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38F31DF6A1D300C45A75 /* DiscoverDetailController.swift */; };
 		D66C38F61DF6A63500C45A75 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C38F51DF6A63500C45A75 /* MenuView.swift */; };
 		D685B32D1DF1604F009013C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B32C1DF1604F009013C3 /* AppDelegate.swift */; };
-		D685B32F1DF1604F009013C3 /* SuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D685B32E1DF1604F009013C3 /* SuperViewController.swift */; };
 		D685B3321DF1604F009013C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D685B3301DF1604F009013C3 /* Main.storyboard */; };
 		D685B3341DF1604F009013C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D685B3331DF1604F009013C3 /* Assets.xcassets */; };
 		D685B3371DF1604F009013C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D685B3351DF1604F009013C3 /* LaunchScreen.storyboard */; };
@@ -66,11 +66,12 @@
 /* Begin PBXFileReference section */
 		0447C8161DF911F900307F95 /* NLABOtherOperateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABOtherOperateView.swift; sourceTree = "<group>"; };
 		0447C8181DF944E900307F95 /* NLABFriendFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABFriendFocusViewController.swift; sourceTree = "<group>"; };
-		0447C81A1DF9498A00307F95 /* NLABBackBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABBackBtn.swift; sourceTree = "<group>"; };
 		04CCF2011DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABDefineBtnOfHomeTitle.swift; sourceTree = "<group>"; };
 		04CCF2061DF85B820075F955 /* NLABHomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABHomeCell.swift; sourceTree = "<group>"; };
 		D633E0591DF7D92600A019F1 /* ConcreteDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteDetailController.swift; sourceTree = "<group>"; };
 		D633E05D1DF7E89300A019F1 /* BottomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
+		D656928C1DF95326006E641F /* SuperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperViewController.swift; sourceTree = "<group>"; };
+		D656928E1DF95326006E641F /* NLABBackBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABBackBtn.swift; sourceTree = "<group>"; };
 		D66C38E91DF693B900C45A75 /* CellButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellButton.swift; sourceTree = "<group>"; };
 		D66C38EA1DF693B900C45A75 /* ItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemButton.swift; sourceTree = "<group>"; };
 		D66C38EB1DF693B900C45A75 /* ScrollMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollMaskView.swift; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 		D66C38F51DF6A63500C45A75 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D685B3291DF1604F009013C3 /* XZSinaWeiboDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZSinaWeiboDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D685B32C1DF1604F009013C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D685B32E1DF1604F009013C3 /* SuperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperViewController.swift; sourceTree = "<group>"; };
 		D685B3311DF1604F009013C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D685B3331DF1604F009013C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D685B3361DF1604F009013C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -196,6 +196,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D656928B1DF952F7006E641F /* E-Assist */ = {
+			isa = PBXGroup;
+			children = (
+				D656928C1DF95326006E641F /* SuperViewController.swift */,
+				D656928D1DF95326006E641F /* UIButton */,
+			);
+			path = "E-Assist";
+			sourceTree = "<group>";
+		};
+		D656928D1DF95326006E641F /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				D656928E1DF95326006E641F /* NLABBackBtn.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
 		D66C38E71DF693B900C45A75 /* FooterView */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,9 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				D685B32C1DF1604F009013C3 /* AppDelegate.swift */,
-				D685B32E1DF1604F009013C3 /* SuperViewController.swift */,
-				0447C81A1DF9498A00307F95 /* NLABBackBtn.swift */,
-				D685B35B1DF165A9009013C3 /* E-Assist */,
+				D656928B1DF952F7006E641F /* E-Assist */,
 				D685B35C1DF165A9009013C3 /* E-Main */,
 				D685B35A1DF16588009013C3 /* E-System */,
 			);
@@ -295,13 +310,6 @@
 				D685B3611DF165BC009013C3 /* Configuration */,
 			);
 			name = "E-System";
-			sourceTree = "<group>";
-		};
-		D685B35B1DF165A9009013C3 /* E-Assist */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "E-Assist";
 			sourceTree = "<group>";
 		};
 		D685B35C1DF165A9009013C3 /* E-Main */ = {
@@ -585,10 +593,8 @@
 				D6C008E51DF8263100B1FBA2 /* ClickRightView.swift in Sources */,
 				D6C008E31DF8179200B1FBA2 /* ConcreteOneCell.swift in Sources */,
 				D685B3821DF16ABC009013C3 /* AddViewController.swift in Sources */,
-				0447C81B1DF9498A00307F95 /* NLABBackBtn.swift in Sources */,
 				D685B3731DF165BC009013C3 /* XXZConstant.swift in Sources */,
 				D633E05E1DF7E89300A019F1 /* BottomButton.swift in Sources */,
-				D685B32F1DF1604F009013C3 /* SuperViewController.swift in Sources */,
 				D633E05A1DF7D92600A019F1 /* ConcreteDetailController.swift in Sources */,
 				D66C38F61DF6A63500C45A75 /* MenuView.swift in Sources */,
 				D66C38ED1DF693B900C45A75 /* ItemButton.swift in Sources */,
@@ -605,9 +611,11 @@
 				D685B37A1DF165BC009013C3 /* XXZDateModel.swift in Sources */,
 				D685B3751DF165BC009013C3 /* XXZFrame.swift in Sources */,
 				D66C38F41DF6A1D300C45A75 /* DiscoverDetailController.swift in Sources */,
+				D656928F1DF95326006E641F /* SuperViewController.swift in Sources */,
 				D66C38EC1DF693B900C45A75 /* CellButton.swift in Sources */,
 				D685B3741DF165BC009013C3 /* XXZFont.swift in Sources */,
 				0447C8191DF944E900307F95 /* NLABFriendFocusViewController.swift in Sources */,
+				D65692901DF95326006E641F /* NLABBackBtn.swift in Sources */,
 				D685B37E1DF16839009013C3 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
