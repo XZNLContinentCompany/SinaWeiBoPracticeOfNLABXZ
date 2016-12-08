@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0447C8171DF911F900307F95 /* NLABOtherOperateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447C8161DF911F900307F95 /* NLABOtherOperateView.swift */; };
+		0447C8191DF944E900307F95 /* NLABFriendFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447C8181DF944E900307F95 /* NLABFriendFocusViewController.swift */; };
+		0447C81B1DF9498A00307F95 /* NLABBackBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447C81A1DF9498A00307F95 /* NLABBackBtn.swift */; };
 		04CCF2021DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCF2011DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift */; };
 		04CCF2071DF85B820075F955 /* NLABHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCF2061DF85B820075F955 /* NLABHomeCell.swift */; };
 		D633E05A1DF7D92600A019F1 /* ConcreteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633E0591DF7D92600A019F1 /* ConcreteDetailController.swift */; };
@@ -61,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0447C8161DF911F900307F95 /* NLABOtherOperateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABOtherOperateView.swift; sourceTree = "<group>"; };
+		0447C8181DF944E900307F95 /* NLABFriendFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABFriendFocusViewController.swift; sourceTree = "<group>"; };
+		0447C81A1DF9498A00307F95 /* NLABBackBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABBackBtn.swift; sourceTree = "<group>"; };
 		04CCF2011DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABDefineBtnOfHomeTitle.swift; sourceTree = "<group>"; };
 		04CCF2061DF85B820075F955 /* NLABHomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABHomeCell.swift; sourceTree = "<group>"; };
 		D633E0591DF7D92600A019F1 /* ConcreteDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteDetailController.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 			children = (
 				04CCF2011DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift */,
 				04CCF2061DF85B820075F955 /* NLABHomeCell.swift */,
+				0447C8161DF911F900307F95 /* NLABOtherOperateView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				D685B37D1DF16839009013C3 /* HomeViewController.swift */,
+				0447C8181DF944E900307F95 /* NLABFriendFocusViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 			children = (
 				D685B32C1DF1604F009013C3 /* AppDelegate.swift */,
 				D685B32E1DF1604F009013C3 /* SuperViewController.swift */,
+				0447C81A1DF9498A00307F95 /* NLABBackBtn.swift */,
 				D685B35B1DF165A9009013C3 /* E-Assist */,
 				D685B35C1DF165A9009013C3 /* E-Main */,
 				D685B35A1DF16588009013C3 /* E-System */,
@@ -576,6 +585,7 @@
 				D6C008E51DF8263100B1FBA2 /* ClickRightView.swift in Sources */,
 				D6C008E31DF8179200B1FBA2 /* ConcreteOneCell.swift in Sources */,
 				D685B3821DF16ABC009013C3 /* AddViewController.swift in Sources */,
+				0447C81B1DF9498A00307F95 /* NLABBackBtn.swift in Sources */,
 				D685B3731DF165BC009013C3 /* XXZConstant.swift in Sources */,
 				D633E05E1DF7E89300A019F1 /* BottomButton.swift in Sources */,
 				D685B32F1DF1604F009013C3 /* SuperViewController.swift in Sources */,
@@ -584,6 +594,7 @@
 				D66C38ED1DF693B900C45A75 /* ItemButton.swift in Sources */,
 				04CCF2021DF830D00075F955 /* NLABDefineBtnOfHomeTitle.swift in Sources */,
 				D685B3771DF165BC009013C3 /* XXZLog.swift in Sources */,
+				0447C8171DF911F900307F95 /* NLABOtherOperateView.swift in Sources */,
 				D685B3791DF165BC009013C3 /* XXZStringClass.swift in Sources */,
 				D685B32D1DF1604F009013C3 /* AppDelegate.swift in Sources */,
 				D685B3721DF165BC009013C3 /* XXZColor.swift in Sources */,
@@ -596,6 +607,7 @@
 				D66C38F41DF6A1D300C45A75 /* DiscoverDetailController.swift in Sources */,
 				D66C38EC1DF693B900C45A75 /* CellButton.swift in Sources */,
 				D685B3741DF165BC009013C3 /* XXZFont.swift in Sources */,
+				0447C8191DF944E900307F95 /* NLABFriendFocusViewController.swift in Sources */,
 				D685B37E1DF16839009013C3 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
