@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BottomButton: UIButton {
+class BottomButton: UIButton, CAAnimationDelegate {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -43,8 +43,10 @@ class BottomButton: UIButton {
         
     }
     
-    //MARK: ------ <#delegate#> ------
-    
+    //MARK: ------ CAAnimationDelegate ------
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        isStopAnimation = true
+    }
     
     //MARK: ------ action ------
     
@@ -73,7 +75,16 @@ class BottomButton: UIButton {
         self.addSubview(verLine)
     }
     
-    func favourAnimated(_ show: Bool) {
+    var isStopAnimation: Bool = true
+    func favourAnimated(_ show: inout Bool) {
+        if !isStopAnimation {
+//            XXZLog("动画还没结束")
+            show = !show
+            return
+        }
+        
+        isStopAnimation = false
+        
         if show {
             img?.backgroundColor = redColor
         }
@@ -81,10 +92,26 @@ class BottomButton: UIButton {
             img?.backgroundColor = cyanColor
         }
         
-        self.img?.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
-        UIView.animate(withDuration: 0.5, animations: {
-            self.img?.transform = CGAffineTransform.init(scaleX: 0.6, y: 0.6)
-        })
+//        self.img?.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.img?.transform = CGAffineTransform.init(scaleX: 0.6, y: 0.6)
+//        })
+        
+        let keyFrameAnimation = CAKeyframeAnimation.init(keyPath: "transform.scale")
+        keyFrameAnimation.delegate = self
+        
+        let value1 = NSValue.init(cgPoint: CGPoint.init(x: 1.0, y: 1.0))
+        let value2 = NSValue.init(cgPoint: CGPoint.init(x: 2.0, y: 2.0))
+        let value3 = NSValue.init(cgPoint: CGPoint.init(x: 0.5, y: 0.5))
+        let value4 = NSValue.init(cgPoint: CGPoint.init(x: 1.0, y: 1.0))
+        keyFrameAnimation.values = [value1, value2, value3, value4]
+        
+//        let timeFunc = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)
+//        keyFrameAnimation.timingFunctions = []
+        keyFrameAnimation.calculationMode = kCAAnimationPaced
+        keyFrameAnimation.duration = 0.5
+        
+        img?.layer .add(keyFrameAnimation, forKey: nil)
     }
     
     //MARK: ------ method ------

@@ -37,8 +37,6 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         self.navigationController?.isNavigationBarHidden = true
         
         initData()
-        
-        XXZLog(currentPage)
     }
     
     func initData() {
@@ -54,7 +52,7 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
         //coding...
         self.navigationController?.isNavigationBarHidden = false
         
-        XXZLog(currentPage)
+//        XXZLog(currentPage)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -180,13 +178,22 @@ class DiscoverViewController: SuperViewController, UITableViewDelegate, UITableV
                     
                     detail.detailArr = dataSourceArr
                     detail.menuIndex = Int(currentPage)
+                    
+                    //回调
+                    detail.currentPageClosure = { (index) in
+//                        XXZLog("index = \(index)")
+                        
+                        let scrollMaskView = self.footerView?.viewWithTag(8000) as! UIScrollView?
+                        scrollMaskView?.contentOffset = CGPoint.init(x: (scrollMaskView?.width)!*CGFloat(index), y: 0)
+                        self.menuView?.lineMoved(CGFloat(index)*(self.menuView?.width)!)
+                    }
                 }
             }
         }
         else {
             let off_x = scrollView.contentOffset.x
             
-            XXZLog(off_x)
+//            XXZLog(off_x)
             
             menuView?.lineMoving(off_x)
         }

@@ -201,8 +201,7 @@ class ConcreteDetailController: SuperViewController, UITableViewDelegate, UITabl
         }
         else { //赞
             defaultFavourStatus = !defaultFavourStatus
-            bottom.favourAnimated(defaultFavourStatus)
-            
+            bottom.favourAnimated(&defaultFavourStatus)
         }
     }
     

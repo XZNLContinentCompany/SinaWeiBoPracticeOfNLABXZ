@@ -102,7 +102,7 @@ class SubTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        XXZLog(indexPath.section)
+//        XXZLog(indexPath.section)
         
         if let delegate = delegate {
             delegate.subTableView(indexPath)

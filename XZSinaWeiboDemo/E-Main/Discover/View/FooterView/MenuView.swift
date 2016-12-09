@@ -42,7 +42,7 @@ class MenuView: UIView {
     //MARK: ------ action ------
     func menuAction(_ btn: UIButton) {
         let tag: CGFloat = CGFloat(btn.tag-1000)
-        XXZLog("tag = \(tag)")
+//        XXZLog("tag = \(tag)")
         
         if let delegate = delegate {
             lineMovingAnimated(tag)

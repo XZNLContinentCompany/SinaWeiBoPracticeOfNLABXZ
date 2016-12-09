@@ -8,7 +8,9 @@
 
 import UIKit
 
-class DiscoverDetailController: SuperViewController, UIScrollViewDelegate, DetailNavBarViewDelegate {
+typealias CurrentPageClosure = ((Int) -> ()) //有参无返回值的闭包
+
+class DiscoverDetailController: SuperViewController, UIScrollViewDelegate, DetailNavBarViewDelegate, DetailTableViewDelegate {
 
     //MARK: ------ constant & variable ------
     var detailArr: [Any]?
@@ -16,8 +18,9 @@ class DiscoverDetailController: SuperViewController, UIScrollViewDelegate, Detai
     
     var detailTable: UITableView?
     var scrollMaskView: UIScrollView?
-    
     var detailNacBarView: DetailNavBarView?
+    
+    var currentPageClosure: CurrentPageClosure?
     
     //MARK: ------ view will appear & disappear ------
     override func viewWillAppear(_ animated: Bool) {
@@ -56,9 +59,9 @@ class DiscoverDetailController: SuperViewController, UIScrollViewDelegate, Detai
         
         buildLayout()
         
-        if let value = detailArr {
-            XXZLog(value)
-        }
+//        if let value = detailArr {
+//            XXZLog(value)
+//        }
     }
     
     //MARK: ------ UIScrollViewDelegate ------
@@ -81,11 +84,29 @@ class DiscoverDetailController: SuperViewController, UIScrollViewDelegate, Detai
     //MARK: ------ DetailNavBarViewDelegate ------
     func detailNavBarView(_ index: Int) {
         menuIndex = index
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.scrollMaskView?.contentOffset = CGPoint.init(x: (self.scrollMaskView?.width)!*CGFloat(index), y: 0)
+        })
+    }
+    
+    //MARK: ------ DetailTableViewDelegate ------
+    func detailTableView(_ indexPath: IndexPath) {
+        
+        let concrete = ConcreteDetailController()
+        self.navigationController?.pushViewController(concrete, animated: true)
+
+        if let value = detailArr {
+            concrete.index = indexPath.section
+            concrete.concreteArr = (value as! Array<Array<String>>)[indexPath.section]
+        }
     }
     
     //MARK: ------ action ------
     func leftAction() {
         let _ = self.navigationController?.popViewController(animated: false)
+        
+        currentPageClosure!(menuIndex)
     }
     
     //MARK: ------ build layout ------
@@ -129,8 +150,10 @@ class DiscoverDetailController: SuperViewController, UIScrollViewDelegate, Detai
         scrollMaskView?.contentOffset = CGPoint.init(x: SCREEN_WIDTH*CGFloat(menuIndex), y: 0)
         self.view.addSubview(scrollMaskView!)
         
+        self.automaticallyAdjustsScrollViewInsets = false
         for i in 0..<4 {
-            let detailTableView = DetailTableView.init(frame: CGRect.init(x: CGFloat(i)*SCREEN_WIDTH, y: 0, width: SCREEN_WIDTH-1, height: SCREEN_HEIGHT))
+            let detailTableView = DetailTableView.init(frame: CGRect.init(x: CGFloat(i)*SCREEN_WIDTH, y: STATUS_NAV_HEIGHT, width: SCREEN_WIDTH-1, height: SCREEN_HEIGHT-STATUS_NAV_HEIGHT))
+            detailTableView.delegate = self;
             detailTableView.detailArr = (detailArr as! Array<Array<String>>)[i]
             scrollMaskView?.addSubview(detailTableView)
         }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DetailTableViewDelegate {
+    func detailTableView(_ indexPath: IndexPath)
+}
+
 class DetailTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     /*
@@ -19,6 +23,8 @@ class DetailTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     */
     var detailArr: [Any]?
     var detailTable: UITableView?
+    
+    var delegate: DetailTableViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -91,16 +97,11 @@ class DetailTableView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let concrete = ConcreteDetailController()
+//        XXZLog(indexPath.section)
         
-//        self.navigationController?.pushViewController(concrete, animated: true)
-        
-//        if let value = detailArr {
-//            concrete.index = indexPath.section
-//            concrete.concreteArr = value
-//        }
-        
-        XXZLog(indexPath.section)
+        if let delegate = delegate {
+            delegate.detailTableView(indexPath)
+        }
     }
     
     
