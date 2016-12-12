@@ -8,12 +8,16 @@
 
 import UIKit
 
-class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDataSource,clickHomeTitleDelegate, clickOtherTableViewCellDelegate {
     
     // MARK: Constants && Variables
     var homeTableView: UITableView?
     var homeSearchBar: UISearchBar?
+    var coverBtn: NLABTitleCoverBtn?
     var cellHeight: CGFloat = 0
+    var homeTitleView: NLABDefineBtnOfHomeTitle?
+    var titleStr: String = "首页"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +35,28 @@ class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDa
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    // MARK:  ----- lazyLoading ----
+    
     //MARK: ------ <#delegate#> ------
     // MARK: UITableViewDataSource && Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let homeTableViewCell = NLABHomeCell.init(style: UITableViewCellStyle.default, reuseIdentifier: "cellID")
-            
-            
+        
+        let identify = "cellID"
+        var homeTableViewCell = tableView.dequeueReusableCell(withIdentifier: identify)
+        if homeTableViewCell == nil {
+            homeTableViewCell = NLABHomeCell.init(style: UITableViewCellStyle.default, reuseIdentifier: identify)
+        }
 //            UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        homeTableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
-        homeTableViewCell.backgroundColor = whiteColor
-        cellHeight = homeTableViewCell.cellHeight()
+        homeTableViewCell?.selectionStyle = UITableViewCellSelectionStyle.none
+        homeTableViewCell?.backgroundColor = whiteColor
+        
+       self.cellHeight = ((homeTableViewCell as! NLABHomeCell?)?.cellHeight())!
 
-//        homeTableViewCell.textLabel?.text = String.init(format: "第%d行", indexPath.row)
-        return homeTableViewCell
+//        homeTableViewCell.textLabel?.text = String.init(format: "第%d行", indexPath. row)
+        return homeTableViewCell!
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -57,9 +67,32 @@ class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDa
 //        return 200 * RATIO_WIDTH
         return cellHeight
     }
+    // MARK: ----- clickHomeTitleDelegate -----
+    func clickHomeTitle(_ indexPath: NSIndexPath, _ titleLabelText: String) {
+        self.titleStr = titleLabelText
+        if titleLabelText == "首页" {
+            self.homeTitleView?.btnLabel?.text = "userName"
+        } else {
+        self.homeTitleView?.btnLabel?.text = titleLabelText
+        }
+        //  Refresh data of titleLabelText
+    }
     
-    
-    
+    // MARK: ----- ClickOtherTableDelegate ----
+    func clickOtherTableCell(_ indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            //  跳转到雷达页面 present
+//            let radarVC = NBRadarController()
+//            self.present(radarVC, animated: true, completion: nil)
+//            self.navigationController?.present(radarVC, animated: true, completion: nil)
+        } else if indexPath.row == 1 {
+            //  跳转到扫一扫页面  push
+            let scanVC = NBScanController()
+            self.navigationController?.pushViewController(scanVC, animated: true)
+        } else if indexPath.row == 2 {
+            //  跳转到打车界面  先present到雷达页面再present到滴滴出行页面
+        }
+    }
     
     //MARK: ------ action ------
     // MARK: clickBtnAction
@@ -69,12 +102,24 @@ class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDa
         self.navigationController?.pushViewController(friendFocusVC, animated: true)
     }
     
+    
     func didClickTitleView() {
-        XXZLog("clickTitle")
+//        XXZLog("clickTitle")
+        let converBtn = NLABTitleCoverBtn.init(frame: CGRect.init(origin: CGPoint.init(x: 0, y: 0), size: SCREEN_SIZE),cellTitle: self.titleStr)
+        //        converBtn.backgroundColor = redColor
+        converBtn.titleDelegate = self
+        let application = UIApplication.shared.keyWindow
+        application?.addSubview(converBtn)
     }
     
     func didClickOtherBtn() {
-        XXZLog("clickOtherBtn")
+//        XXZLog("clickOtherBtn")
+        let otherView = NLABOtherView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH , height: SCREEN_HEIGHT))
+        otherView.otherTableDelegate = self
+//        otherView.backgroundColor = RGB(80, 80, 80)
+        otherView.backgroundColor = clearColor
+        let application = UIApplication.shared.keyWindow
+        application?.addSubview(otherView)
     }
     
     //MARK: ------ build layout ------
@@ -93,13 +138,13 @@ class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDa
         //        profileBtn.backgroundColor = UIColor.blue
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: profileBtn)
         
-        
         let myDefineBtn = NLABDefineBtnOfHomeTitle.init(frame: CGRect.init(x: 0, y: 20 * RATIO_WIDTH, width: 100 * RATIO_WIDTH, height: 40 * RATIO_WIDTH), text: "userNick", image: "navigationbar_arrow_down")
+        self.homeTitleView = myDefineBtn
         myDefineBtn.addTarget(self, action: #selector(didClickTitleView), for: UIControlEvents.touchUpInside)
         myDefineBtn.backgroundColor = redColor
         self.navigationItem.titleView = myDefineBtn
         
-        let otherActionBtn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 44 * RATIO_WIDTH, height: 44 * RATIO_WIDTH))
+        let otherActionBtn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 44, height: 44))
         otherActionBtn.imageView?.image = UIImage.init(named: "navigationbar_more")
         otherActionBtn.setImage(UIImage.init(named: "navigationbar_more"), for: UIControlState.normal)
         otherActionBtn.backgroundColor = cyanColor
@@ -129,13 +174,13 @@ class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDa
         self.view.addSubview(homeTableView)
     }
     
-    
-    
     //MARK: ------ loading ------
     
     
     //MARK: ------ method ------
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
     
     //MARK: ------ deinit ------
     deinit {

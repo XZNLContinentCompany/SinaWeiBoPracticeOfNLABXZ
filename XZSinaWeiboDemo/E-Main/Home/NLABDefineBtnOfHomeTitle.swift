@@ -9,6 +9,10 @@
 import UIKit
 
 class NLABDefineBtnOfHomeTitle: UIButton {
+    
+    var btnLabel: UILabel?
+    var btnIagView: UIImageView?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
@@ -27,18 +31,18 @@ class NLABDefineBtnOfHomeTitle: UIButton {
     // MARK: defineOfMyLabel
     func buildBtnLabel(text: String) {
 //        let btnLabel = UILabel.init(frame: CGRect.init(x: 0, y: (self.height - 20 * RATIO_WIDTH) / 2, width: self.width * 2 / 3 , height: 20 * RATIO_WIDTH)
-        let btnLabel = UILabel.init(frame: CGRect.init(x: 0, y: (self.height - 20 * RATIO_WIDTH) / 2, width: self.width * 2 / 3, height: 20 * RATIO_WIDTH))
-        btnLabel.text = text
-        btnLabel.textColor = blackColor
-        btnLabel.textAlignment = NSTextAlignment.center
-        btnLabel.font = FONT_12
-        self.addSubview(btnLabel)
+        btnLabel = UILabel.init(frame: CGRect.init(x: 0, y: (self.height - 20 * RATIO_WIDTH) / 2, width: self.width * 2 / 3, height: 20 * RATIO_WIDTH))
+        btnLabel?.text = text
+        btnLabel?.textColor = blackColor
+        btnLabel?.textAlignment = NSTextAlignment.center
+        btnLabel?.font = FONT_12
+        self.addSubview(btnLabel!)
     }
     
     func buildBtnImage(image: String) {
-        let btnIagView = UIImageView.init(frame: CGRect.init(x: self.width * 2 / 3, y: (self.height - 40 * RATIO_WIDTH) / 2, width: self.width / 3, height: 40 * RATIO_WIDTH))
-        btnIagView.image = UIImage.init(named: image)
-        self.addSubview(btnIagView)
+        btnIagView = UIImageView.init(frame: CGRect.init(x: self.width * 2 / 3, y: (self.height - 40 * RATIO_WIDTH) / 2, width: self.width / 3, height: 40 * RATIO_WIDTH))
+        btnIagView?.image = UIImage.init(named: image)
+        self.addSubview(btnIagView!)
     }
    
     

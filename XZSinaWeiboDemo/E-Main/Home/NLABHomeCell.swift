@@ -119,7 +119,7 @@ class NLABHomeCell: UITableViewCell {
         
     }
     
-    func cellHeight() -> CGFloat {
+   public func cellHeight() -> CGFloat {
         return self.cellSeperateLine!.maxY
     }
     
