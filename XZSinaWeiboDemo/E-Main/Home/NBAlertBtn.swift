@@ -14,8 +14,10 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        titleArr = ["收藏", "帮上头条", "取消关注", "屏蔽", "举报"]
-        sectionTwo = ["取消"]
+        
+        self.isHidden = false
+        self.backgroundColor = blackColor.withAlphaComponent(0.0)
+        
         buildSubViews()
     }
     
@@ -25,28 +27,22 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
     
     // MARK: buildSubViews
     func buildSubViews() {
-        buildAlertBtn()
+        titleArr = ["收藏", "帮上头条", "取消关注", "屏蔽", "举报"]
+        sectionTwo = ["取消"]
+        
         buildViews()
-    }
-    
-    func buildAlertBtn() {
-        self.backgroundColor = blackColor.withAlphaComponent(0.45)
-        self.frame = CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
     }
     
     func buildViews() {
 //        let alertTableView = UITableView.init(frame: CGRect.init(x: 0, y: SCREEN_HEIGHT - 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6))
         let alertTableView = UITableView.init()
-        alertTableView.frame = CGRect.init(x: 0, y: SCREEN_HEIGHT + 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6)
+        alertTableView.frame = CGRect.init(x: 0, y: SCREEN_HEIGHT - 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6)
         alertTableView.delegate = self
         alertTableView.dataSource = self
+        alertTableView.tag = 1001
         alertTableView.separatorColor = RGB(240, 240, 240)
         alertTableView.isScrollEnabled = false
-        UIView.animate(withDuration: 1.0, animations: {
-            alertTableView.frame = CGRect.init(x: 0, y: SCREEN_HEIGHT - 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6)
-        }, completion: { (finish) in
-            
-        })
+        
         self.addSubview(alertTableView)
     }
     
@@ -135,14 +131,40 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            self.removeFromSuperview()
+            hiddenAnimated()
         }
     }
     
     //MARK: ------ Method ------
     // MARK: 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.removeFromSuperview()
+        hiddenAnimated()
+    }
+    
+    func showAnimated() {
+        self.isHidden = false
+        let tableView = self.viewWithTag(1001) as! UITableView?
+        tableView?.transform = CGAffineTransform.init(translationX: 0, y: 50 * RATIO_WIDTH * 6)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            
+            self.backgroundColor = blackColor.withAlphaComponent(0.5)
+            tableView?.transform = CGAffineTransform.identity
+            
+        })
+    }
+    
+    func hiddenAnimated() {
+        let tableView = self.viewWithTag(1001) as! UITableView?
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            
+            self.backgroundColor = blackColor.withAlphaComponent(0.0)
+            tableView?.transform = CGAffineTransform.init(translationX: 0, y: 50 * RATIO_WIDTH * 6)
+            
+        }, completion: { (finished) in
+            self.isHidden = true
+        })
     }
 
     /*

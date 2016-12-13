@@ -116,14 +116,10 @@ class NLABHomeCell: UITableViewCell {
     // MARK: Action
     // MARK: ClickBtnAction
     func clickMoreBtn() -> Void {
-        let alertBtn = NBAlertBtn.init(frame: CGRect.init())
-        alertBtn.backgroundColor = blackColor.withAlphaComponent(0.0)
-        let application = UIApplication.shared.keyWindow
-        application?.addSubview(alertBtn)
-        UIView.animate(withDuration: 0.5, animations: {
-            alertBtn.backgroundColor = blackColor.withAlphaComponent(0.5)
-        })
+        let alertBtn = NBAlertBtn.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        UIApplication.shared.keyWindow?.addSubview(alertBtn)
         
+        alertBtn.showAnimated()
      }
 }
 
