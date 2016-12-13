@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040A51471DFE44AD0075758A /* NLABTitleCoverBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A51461DFE44AD0075758A /* NLABTitleCoverBtn.swift */; };
+		042C40041DFFD97600BFB1B6 /* NBAlertBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C40031DFFD97600BFB1B6 /* NBAlertBtn.swift */; };
 		0447C8171DF911F900307F95 /* NLABOtherOperateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447C8161DF911F900307F95 /* NLABOtherOperateView.swift */; };
 		0447C8191DF944E900307F95 /* NLABFriendFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0447C8181DF944E900307F95 /* NLABFriendFocusViewController.swift */; };
 		0480FA3D1DFE8D4B00D5FB49 /* NLABOtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480FA3C1DFE8D4B00D5FB49 /* NLABOtherView.swift */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		040A51461DFE44AD0075758A /* NLABTitleCoverBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABTitleCoverBtn.swift; sourceTree = "<group>"; };
+		042C40031DFFD97600BFB1B6 /* NBAlertBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBAlertBtn.swift; sourceTree = "<group>"; };
 		0447C8161DF911F900307F95 /* NLABOtherOperateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABOtherOperateView.swift; sourceTree = "<group>"; };
 		0447C8181DF944E900307F95 /* NLABFriendFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABFriendFocusViewController.swift; sourceTree = "<group>"; };
 		0480FA3C1DFE8D4B00D5FB49 /* NLABOtherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLABOtherView.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				04C2A2811DFB9BFB0042C77A /* NBHomeTitleCell.swift */,
 				0480FA3C1DFE8D4B00D5FB49 /* NLABOtherView.swift */,
 				0480FA3E1DFE909700D5FB49 /* NLABOtherTableCell.swift */,
+				042C40031DFFD97600BFB1B6 /* NBAlertBtn.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				D685B3721DF165BC009013C3 /* XXZColor.swift in Sources */,
 				D685B3841DF16AC6009013C3 /* DiscoverViewController.swift in Sources */,
 				04CCF2071DF85B820075F955 /* NLABHomeCell.swift in Sources */,
+				042C40041DFFD97600BFB1B6 /* NBAlertBtn.swift in Sources */,
 				D685B3781DF165BC009013C3 /* XXZInterface.swift in Sources */,
 				040A51471DFE44AD0075758A /* NLABTitleCoverBtn.swift in Sources */,
 				D66C38F01DF6953C00C45A75 /* SubTableView.swift in Sources */,

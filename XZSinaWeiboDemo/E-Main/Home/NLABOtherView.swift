@@ -68,6 +68,7 @@ class NLABOtherView: UIView,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let delegate = otherTableDelegate {
+            self.removeFromSuperview()
             delegate.clickOtherTableCell(indexPath as NSIndexPath)
         }
     }

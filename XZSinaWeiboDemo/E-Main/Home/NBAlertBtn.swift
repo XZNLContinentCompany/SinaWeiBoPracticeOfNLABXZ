@@ -1,0 +1,140 @@
+//
+//  NBAlertBtn.swift
+//  XZSinaWeiboDemo
+//
+//  Created by 张炳磊 on 2016/12/13.
+//  Copyright © 2016年 Zachary. All rights reserved.
+//
+
+import UIKit
+
+class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
+    var titleArr: Array<Any>?
+    var sectionTwo: Array<Any>?
+    var titleLa: UILabel?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        titleArr = ["收藏", "帮上头条", "取消关注", "屏蔽", "举报"]
+        sectionTwo = ["取消"]
+        buildSubViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: buildSubViews
+    func buildSubViews() {
+        buildAlertBtn()
+        buildViews()
+    }
+    
+    func buildAlertBtn() {
+        self.backgroundColor = blackColor.withAlphaComponent(0.45)
+        self.frame = CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
+    }
+    
+    func buildViews() {
+//        let alertTableView = UITableView.init(frame: CGRect.init(x: 0, y: SCREEN_HEIGHT - 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6))
+        let alertTableView = UITableView.init()
+        alertTableView.frame = CGRect.init(x: 0, y: SCREEN_HEIGHT + 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6)
+        alertTableView.delegate = self
+        alertTableView.dataSource = self
+        alertTableView.separatorColor = RGB(240, 240, 240)
+        alertTableView.isScrollEnabled = false
+        UIView.animate(withDuration: 1.0, animations: {
+            alertTableView.frame = CGRect.init(x: 0, y: SCREEN_HEIGHT - 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6)
+        }, completion: { (finish) in
+            
+        })
+        self.addSubview(alertTableView)
+    }
+    
+    // MARK: Delegate && DataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return (titleArr?.count)!
+        } else if section == 1{
+            return (sectionTwo?.count)!
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellID = "cellID"
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellID)
+        if cell == nil {
+            cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: cellID)
+            cell?.selectionStyle = UITableViewCellSelectionStyle.none
+            
+//            let labelH = 50 * RATIO_WIDTH
+//            let labelW = 200 * RATIO_WIDTH
+//            titleLa? = UILabel.init(frame: CGRect.init(x: (SCREEN_WIDTH - labelW) / 2, y: 0, width: labelW, height: labelH))
+//            titleLa?.textColor = blackColor
+//            titleLa?.font = FONT_15
+//            titleLa?.textAlignment = NSTextAlignment.center
+//            cell?.contentView.addSubview(titleLa!)
+            
+        }
+        if indexPath.section == 0 {
+            if indexPath.row < (titleArr?.count)! {
+                cell?.textLabel?.text = titleArr?[indexPath.row] as! String?
+                cell?.textLabel?.textAlignment = NSTextAlignment.center
+            }
+        } else if indexPath.section == 1 {
+            cell?.textLabel?.text = "取消"
+            cell?.textLabel?.textAlignment = NSTextAlignment.center
+        }
+        
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50 * RATIO_WIDTH
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 5 * RATIO_WIDTH
+        } else {
+            return 0.001
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1{
+            let header = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: 5 * RATIO_WIDTH))
+            header.backgroundColor = RGB(240, 240, 240)
+            return header
+        } else {
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            self.removeFromSuperview()
+        }
+    }
+    
+    //MARK: ------ Method ------
+    // MARK: 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.removeFromSuperview()
+    }
+
+    /*
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+    }
+    */
+
+}

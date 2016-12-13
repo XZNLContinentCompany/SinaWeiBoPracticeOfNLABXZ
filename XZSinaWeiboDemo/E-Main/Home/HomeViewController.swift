@@ -82,29 +82,29 @@ class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDa
     func clickOtherTableCell(_ indexPath: NSIndexPath) {
         if indexPath.row == 0 {
             //  跳转到雷达页面 present
-//            let radarVC = NBRadarController()
-//            self.present(radarVC, animated: true, completion: nil)
-//            self.navigationController?.present(radarVC, animated: true, completion: nil)
+            let radarVC = NBRadarController()
+            self.present(radarVC, animated: true, completion: nil)
         } else if indexPath.row == 1 {
             //  跳转到扫一扫页面  push
             let scanVC = NBScanController()
             self.navigationController?.pushViewController(scanVC, animated: true)
         } else if indexPath.row == 2 {
             //  跳转到打车界面  先present到雷达页面再present到滴滴出行页面
+//            let goOutVC = NBGoOutController()
+            let radarVC = NBRadarController()
+            self.present(radarVC, animated: true, completion: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"pushToGoOut"), object: nil, userInfo: nil)
         }
     }
     
     //MARK: ------ action ------
     // MARK: clickBtnAction
     func didClickProfileBtn() {
-//        XXZLog("clickProfileBtn")
         let friendFocusVC = NLABFriendFocusViewController()
         self.navigationController?.pushViewController(friendFocusVC, animated: true)
     }
     
-    
     func didClickTitleView() {
-//        XXZLog("clickTitle")
         let converBtn = NLABTitleCoverBtn.init(frame: CGRect.init(origin: CGPoint.init(x: 0, y: 0), size: SCREEN_SIZE),cellTitle: self.titleStr)
         //        converBtn.backgroundColor = redColor
         converBtn.titleDelegate = self
@@ -113,7 +113,6 @@ class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDa
     }
     
     func didClickOtherBtn() {
-//        XXZLog("clickOtherBtn")
         let otherView = NLABOtherView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH , height: SCREEN_HEIGHT))
         otherView.otherTableDelegate = self
 //        otherView.backgroundColor = RGB(80, 80, 80)

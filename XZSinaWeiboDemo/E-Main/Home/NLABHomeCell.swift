@@ -21,16 +21,6 @@ class NLABHomeCell: UITableViewCell {
     var otherOperateView: NLABOtherOperateView?
     var cellSeperateLine: UIView?
     
-//
-//    // MARK: 懒加载
-//    let headIag: UIImageView = {
-//        let headIagH: CGFloat = 60.0 * RATIO_WIDTH
-//        let headIag = UIImageView.init(frame: CGRect.init(x: 10 * RATIO_WIDTH, y: 10 * RATIO_WIDTH, width: headIagH, height: headIagH))
-//        headIag.image = UIImage.init(named: "")
-//    }
-
-    
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -123,16 +113,19 @@ class NLABHomeCell: UITableViewCell {
         return self.cellSeperateLine!.maxY
     }
     
-    
     // MARK: Action
     // MARK: ClickBtnAction
     func clickMoreBtn() -> Void {
-        XXZLog("clickedMoreBtn")
-    }
-    
-    
+        let alertBtn = NBAlertBtn.init(frame: CGRect.init())
+        alertBtn.backgroundColor = blackColor.withAlphaComponent(0.0)
+        let application = UIApplication.shared.keyWindow
+        application?.addSubview(alertBtn)
+        UIView.animate(withDuration: 0.5, animations: {
+            alertBtn.backgroundColor = blackColor.withAlphaComponent(0.5)
+        })
+        
+     }
 }
-
 
 
 

@@ -12,6 +12,10 @@ class NBScanController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "扫一扫"
+        self.tabBarController?.tabBar.isHidden = true
+        self.view.backgroundColor = BACK_COLOR
 
         // Do any additional setup after loading the view.
     }
