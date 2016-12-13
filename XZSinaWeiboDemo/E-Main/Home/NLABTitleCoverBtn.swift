@@ -18,6 +18,7 @@ class NLABTitleCoverBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
     var editMyGroup: UIButton?
     var titleDelegate: clickHomeTitleDelegate?
     var cellTitle: String?
+    var titleTableView: UITableView?
         
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -34,6 +35,7 @@ class NLABTitleCoverBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
         let tableViewH = 300 * RATIO_WIDTH
         let tableViewW = 200 * RATIO_WIDTH
         let tableView = UITableView.init(frame: CGRect.init(x: (SCREEN_WIDTH - tableViewW) / 2, y: 64, width: tableViewW, height: tableViewH))
+        self.titleTableView = tableView
         tableView.delegate = self
         tableView.dataSource = self
 //        tableView.backgroundColor = blackColor
@@ -112,8 +114,8 @@ class NLABTitleCoverBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
         let tempCell = (cell as! NBHomeTitleCell)
         tempCell.typeLabel?.backgroundColor = RGB(120, 120, 120)
         tempCell.typeLabel?.textColor = RGB(235, 175, 36)
-//        XXZLog("selected \(tempCell.typeLabel?.text)")
-        self.removeFromSuperview()
+//        self.removeFromSuperview()
+        hiddenAnimation()
     
         if let titleDelegate = titleDelegate {
             titleDelegate.clickHomeTitle(indexPath as NSIndexPath, (tempCell.typeLabel?.text)!)
@@ -121,9 +123,29 @@ class NLABTitleCoverBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.removeFromSuperview()
+//        self.removeFromSuperview()
+        hiddenAnimation()
     }
     
+    //MARK: ------ publicFunction ------
+    func showAnimation() {
+//        let W = 200 * RATIO_WIDTH
+        self.isHidden = false
+        self.titleTableView?.transform = CGAffineTransform.init(translationX: 0, y: 0)
+        UIView.animate(withDuration: 0.3, animations: {
+//            self.backgroundColor = blackColor.withAlphaComponent(0.25)
+            self.titleTableView?.transform = CGAffineTransform.identity
+        })
+    }
+    
+    func hiddenAnimation() {
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.titleTableView?.transform = CGAffineTransform.init(translationX: 0, y: 0)
+        }, completion: { (finish) in
+            self.isHidden = true
+        })
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

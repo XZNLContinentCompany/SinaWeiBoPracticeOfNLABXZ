@@ -25,15 +25,15 @@ class NLABHomeCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
+        //        super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -105,11 +105,11 @@ class NLABHomeCell: UITableViewCell {
         self.contentView.addSubview(otherOperateView!)
         self.contentView.addSubview(cellSeperateLine!)
         
-//        self.contentView.addSubview(headIag)
+        //        self.contentView.addSubview(headIag)
         
     }
     
-   public func cellHeight() -> CGFloat {
+    public func cellHeight() -> CGFloat {
         return self.cellSeperateLine!.maxY
     }
     
@@ -120,12 +120,5 @@ class NLABHomeCell: UITableViewCell {
         UIApplication.shared.keyWindow?.addSubview(alertBtn)
         
         alertBtn.showAnimated()
-     }
+    }
 }
-
-
-
-
-
-
-

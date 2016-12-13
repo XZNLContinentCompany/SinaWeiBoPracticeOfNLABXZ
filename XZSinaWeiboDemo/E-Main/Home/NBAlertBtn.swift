@@ -34,7 +34,7 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
     }
     
     func buildViews() {
-//        let alertTableView = UITableView.init(frame: CGRect.init(x: 0, y: SCREEN_HEIGHT - 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6))
+        //        let alertTableView = UITableView.init(frame: CGRect.init(x: 0, y: SCREEN_HEIGHT - 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6))
         let alertTableView = UITableView.init()
         alertTableView.frame = CGRect.init(x: 0, y: SCREEN_HEIGHT - 50 * RATIO_WIDTH * 6, width: SCREEN_WIDTH, height: 50 * RATIO_WIDTH * 6)
         alertTableView.delegate = self
@@ -87,8 +87,8 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
         let title = cell?.contentView.viewWithTag(1000) as! UILabel?
         
         if indexPath.section == 0 {
-//                cell?.textLabel?.text = titleArr?[indexPath.row] as! String?
-//                cell?.textLabel?.textAlignment = NSTextAlignment.center
+            //                cell?.textLabel?.text = titleArr?[indexPath.row] as! String?
+            //                cell?.textLabel?.textAlignment = NSTextAlignment.center
             
             if let value = titleArr?[indexPath.row]  {
                 title?.text = "\(value)"
@@ -98,8 +98,8 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
             }
             
         } else if indexPath.section == 1 {
-//            cell?.textLabel?.text = "取消"
-//            cell?.textLabel?.textAlignment = NSTextAlignment.center
+            //            cell?.textLabel?.text = "取消"
+            //            cell?.textLabel?.textAlignment = NSTextAlignment.center
             
             title?.text = "取消"
         }
@@ -136,7 +136,7 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
     }
     
     //MARK: ------ Method ------
-    // MARK: 
+    // MARK:
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         hiddenAnimated()
     }
@@ -166,13 +166,13 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
             self.isHidden = true
         })
     }
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }

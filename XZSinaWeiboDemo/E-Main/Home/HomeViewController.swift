@@ -106,10 +106,10 @@ class HomeViewController: SuperViewController,UITableViewDelegate, UITableViewDa
     
     func didClickTitleView() {
         let converBtn = NLABTitleCoverBtn.init(frame: CGRect.init(origin: CGPoint.init(x: 0, y: 0), size: SCREEN_SIZE),cellTitle: self.titleStr)
-        //        converBtn.backgroundColor = redColor
         converBtn.titleDelegate = self
         let application = UIApplication.shared.keyWindow
         application?.addSubview(converBtn)
+        converBtn.showAnimation()
     }
     
     func didClickOtherBtn() {

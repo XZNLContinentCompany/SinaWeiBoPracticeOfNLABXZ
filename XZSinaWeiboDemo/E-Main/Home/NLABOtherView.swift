@@ -81,7 +81,22 @@ class NLABOtherView: UIView,UITableViewDelegate,UITableViewDataSource {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.removeFromSuperview()
     }
+    
+    func showAnimation() {
+        self.isHidden = false
+        otherTableView?.transform = CGAffineTransform.init(translationX: 0, y: 0)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.otherTableView?.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
 
+    func hiddenAnimation() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.otherTableView?.transform = CGAffineTransform.init(translationX: 0, y: 0)
+        }, completion: { (finish) in
+            self.isHidden = true
+        })
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
