@@ -11,7 +11,6 @@ import UIKit
 class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
     var titleArr: Array<Any>?
     var sectionTwo: Array<Any>?
-    var titleLa: UILabel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,12 +57,17 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return (titleArr?.count)!
-        } else if section == 1{
-            return (sectionTwo?.count)!
-        } else {
-            return 0
+            if let value = titleArr?.count {
+                return value
+            }
         }
+        else if section == 1{
+            if let value = sectionTwo?.count {
+                return value
+            }
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,23 +77,35 @@ class NBAlertBtn: UIButton,UITableViewDelegate,UITableViewDataSource {
             cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: cellID)
             cell?.selectionStyle = UITableViewCellSelectionStyle.none
             
-//            let labelH = 50 * RATIO_WIDTH
-//            let labelW = 200 * RATIO_WIDTH
-//            titleLa? = UILabel.init(frame: CGRect.init(x: (SCREEN_WIDTH - labelW) / 2, y: 0, width: labelW, height: labelH))
-//            titleLa?.textColor = blackColor
-//            titleLa?.font = FONT_15
-//            titleLa?.textAlignment = NSTextAlignment.center
-//            cell?.contentView.addSubview(titleLa!)
+            let labelH = 50 * RATIO_WIDTH
+            let labelW = 200 * RATIO_WIDTH
+            let title = UILabel.init(frame: CGRect.init(x: (SCREEN_WIDTH - labelW) / 2, y: 0, width: labelW, height: labelH))
+            title.textColor = blackColor
+            title.font = FONT_15
+            title.tag = 1000;
+            title.textAlignment = NSTextAlignment.center
+            cell?.contentView.addSubview(title)
             
         }
+        
+        let title = cell?.contentView.viewWithTag(1000) as! UILabel?
+        
         if indexPath.section == 0 {
-            if indexPath.row < (titleArr?.count)! {
-                cell?.textLabel?.text = titleArr?[indexPath.row] as! String?
-                cell?.textLabel?.textAlignment = NSTextAlignment.center
+//                cell?.textLabel?.text = titleArr?[indexPath.row] as! String?
+//                cell?.textLabel?.textAlignment = NSTextAlignment.center
+            
+            if let value = titleArr?[indexPath.row]  {
+                title?.text = "\(value)"
             }
+            else {
+                XXZLog("没值")
+            }
+            
         } else if indexPath.section == 1 {
-            cell?.textLabel?.text = "取消"
-            cell?.textLabel?.textAlignment = NSTextAlignment.center
+//            cell?.textLabel?.text = "取消"
+//            cell?.textLabel?.textAlignment = NSTextAlignment.center
+            
+            title?.text = "取消"
         }
         
         return cell!
